@@ -6,7 +6,7 @@
         {
             InitializeComponent();
 
-            MainPage = new AppShell();
+            MainPage = new LenayGG_Movil.Views.LoginMovil();
         }
     }
 }

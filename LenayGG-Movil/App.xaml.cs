@@ -9,8 +9,7 @@ namespace LenayGG_Movil
         public App()
         {
             InitializeComponent();
-
-            MainPage = new SignIn();
+            MainPage = new LenayGG_Movil.Views.LoginMovi();
         }
     }
 }

@@ -6,7 +6,9 @@ using System.Threading.Tasks;
 
 namespace LenayGG_Movil.Models
 {
-    internal class Class1
+    public class ApiResponseDto
     {
+        public string mensaje {  get; set; }
+        public int tipoError { get; set; }
     }
 }

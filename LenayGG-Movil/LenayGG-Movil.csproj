@@ -58,7 +58,11 @@
 
 	<ItemGroup>
 	  <None Remove="Resources\Images\fondo.jpeg" />
+	  <None Remove="Resources\Images\home.png" />
 	  <None Remove="Resources\Images\logotipo.jpg" />
+	  <None Remove="Resources\Images\ringing.png" />
+	  <None Remove="Resources\Images\support.png" />
+	  <None Remove="Resources\Images\wallet.png" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -75,6 +79,21 @@
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Views\Login\SignUp.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\Main\Main.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\Notification\Notifications.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\TabbedPageContainer.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\Tools\Tools.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\Wallet\Wallets.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	</ItemGroup>

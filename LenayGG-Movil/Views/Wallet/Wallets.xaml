@@ -2,11 +2,101 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="LenayGG_Movil.Views.Wallet.Wallets"
-             Title="Wallets">
+             Title="Wallets"
+             BackgroundColor="White">
+
     <VerticalStackLayout>
-        <Label 
-            Text="Welcome to Wasdasd!"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
+        <Frame BackgroundColor="White"
+           BorderColor="White">
+            <Frame HorizontalOptions="Start"
+               VerticalOptions="Start"
+               CornerRadius="50"
+               BackgroundColor="#67AE08"
+               BorderColor="#67AE08"
+               Padding="10  ">
+                <Label Text="Billeteras"
+                   FontSize="Subtitle"/>
+            </Frame>
+        </Frame>
+
+        <Frame BackgroundColor="#C7696B"
+               BorderColor="#C7696B"
+               Margin="30,0,30,0"
+               CornerRadius="25">
+            <VerticalStackLayout>
+                <Frame BackgroundColor="white"
+                       BorderColor="White"
+                       Margin="20,0,20,0"
+                       Padding="5"
+                       CornerRadius="50">
+                    <Label Text="Santander"
+                           TextColor="Black"
+                           FontSize="Title"
+                           FontAttributes="Bold"
+                           HorizontalTextAlignment="Center"/>
+                </Frame>
+
+                <Grid Padding="0,30,0,0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="2*"/>
+                        <ColumnDefinition Width="5*"/>
+                        <ColumnDefinition Width="3*"/>
+                    </Grid.ColumnDefinitions>
+                    <Label Grid.Column="0"
+                           Text="debes"
+                           HorizontalOptions="End"
+                           VerticalOptions="End"
+                           Padding="0,0,5,10"/>
+                    <Label Grid.Column="1"
+                           Text="$20,000.25"
+                           FontSize="25"
+                           FontAttributes="Bold"/>
+                    <Frame Grid.Column="2"
+                           BackgroundColor="#f0f0f0"
+                           BorderColor="#f0f0f0"
+                           CornerRadius="50"
+                           VerticalOptions="CenterAndExpand"
+                           HorizontalOptions="CenterAndExpand"></Frame>
+                </Grid>
+
+                <Grid Padding="0,15,0,10">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="5*"/>
+                        <ColumnDefinition Width="5*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <HorizontalStackLayout Grid.Column="0">
+                        <Label Text="Disponible:  "
+                               FontSize="12"/>
+                        <Label Text="$10,523.00"
+                               FontSize="12"
+                               FontAttributes="Bold"/>
+                    </HorizontalStackLayout>
+                    <HorizontalStackLayout Grid.Column="1"
+                                           HorizontalOptions="EndAndExpand">
+                        <Label Text="Fecha Pago:  "
+                               FontSize="12"/>
+                        <Label Text="02/10/24"
+                               FontSize="12"
+                               FontAttributes="Bold"/>
+                    </HorizontalStackLayout>
+
+                </Grid>
+
+            </VerticalStackLayout>
+
+        </Frame>
+        
+        
     </VerticalStackLayout>
+
+
+
+
+
+
+
+
+
+
 </ContentPage>

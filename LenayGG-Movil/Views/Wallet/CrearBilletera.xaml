@@ -2,55 +2,67 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="LenayGG_Movil.Views.Wallet.CrearBilletera"
-             Title="Crear Nueva Billetera">
+             Title="Crear Nueva Billetera"
+             xmlns:local="clr-namespace:LenayGG_Movil"
+             BackgroundColor="White">
 
-    <AbsoluteLayout>
+    <VerticalStackLayout>
+        <Label Text="Crear nueva billetera"
+               TextColor="Black"
+               FontAttributes="Bold"
+               FontSize="20"
+               HorizontalOptions="CenterAndExpand"
+               Padding="0,15,0,0"/>
 
-        <ScrollView AbsoluteLayout.LayoutBounds="0,0,1,1" 
-                    AbsoluteLayout.LayoutFlags="All">
-            <VerticalStackLayout Padding="20" Spacing="20">
+        <Grid Padding="0,30,0,0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="3*"/>
+                <ColumnDefinition Width="10*"/>
+            </Grid.ColumnDefinitions>
 
-                <Label Text="Crear Nueva Billetera" 
-                       FontSize="24" 
-                       FontAttributes="Bold" 
-                       HorizontalOptions="Center" 
-                       TextColor="Black" />
+            <Image Source="card"
+                   WidthRequest="25" 
+                   VerticalOptions="End"
+                   HorizontalOptions="End"
+                   Margin="0,0,10,0"/>
+            <StackLayout Margin="0,0,30,0" Grid.Column="1">
+                <local:BorderLessEntry Placeholder="Nombre de billetera" PlaceholderColor="Gray" TextColor="Black"/>
+                <BoxView HeightRequest="2" Color="Black"/>
+            </StackLayout>
+        </Grid>
 
-                <HorizontalStackLayout Spacing="10">
-                    <Image Source="icono_escribir.png" HeightRequest="30" WidthRequest="30"/>
-                    <Entry x:Name="walletNameEntry"
-                           Placeholder="Nombre" 
-                           PlaceholderColor="Gray" 
-                           FontSize="16"
-                           WidthRequest="300"/>
-                </HorizontalStackLayout>
+        <Grid Padding="0,30,0,0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="3*"/>
+                <ColumnDefinition Width="10*"/>
+            </Grid.ColumnDefinitions>
 
-                <HorizontalStackLayout Spacing="10">
-                    <Image Source="icono_seleccionar.png" HeightRequest="30" WidthRequest="30"/>
-                    <Picker x:Name="accountTypePicker" 
-                            Title="Selecciona tipo de cuenta" 
-                            ItemsSource="{Binding AccountTypes}"
-                            SelectedIndexChanged="OnAccountTypeSelected"
-                            WidthRequest="300"/>
-                </HorizontalStackLayout>
+            <Image Source="card"
+           WidthRequest="25" 
+           VerticalOptions="End"
+           HorizontalOptions="End"
+           Margin="0,0,10,0"/>
 
-                <!-- Asegúrate de que este StackLayout sea accesible -->
-                <StackLayout x:Name="dynamicFields" />
-                <!-- Aquí se agregarán los campos dinámicos -->
+            <StackLayout Margin="0,0,30,0" Grid.Column="1">
+                <local:PickerUnderLineColor Title="Tipo de cuenta" TextColor="Black"/>
+                <BoxView HeightRequest="2" Color="Black"/>
+            </StackLayout>
+        </Grid>
 
-            </VerticalStackLayout>
-        </ScrollView>
+        <ContentView x:Name="CardOption"/>
 
-        <Button Text="+" 
-                BackgroundColor="#67AE08" 
+
+        <Button Text="+"
                 TextColor="White"
-                CornerRadius="30" 
-                WidthRequest="60" 
-                HeightRequest="80"
-                AbsoluteLayout.LayoutBounds="1,1,AutoSize,AutoSize" 
-                AbsoluteLayout.LayoutFlags="PositionProportional"
-                Clicked="OnAddWalletButtonClicked"/>
+                FontAttributes="Bold"
+                FontSize="Title"
+                BackgroundColor="#67AE08"
+                Margin="0,80,20,0"
+                Padding="30,20,30,20"
+                VerticalOptions="End"
+                HorizontalOptions="EndAndExpand"
+                CornerRadius="50"/>
 
-    </AbsoluteLayout>
+    </VerticalStackLayout>
 
 </ContentPage>

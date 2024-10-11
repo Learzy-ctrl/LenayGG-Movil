@@ -7,10 +7,11 @@
              xmlns:Notification="clr-namespace:LenayGG_Movil.Views.Notification"
              xmlns:Tool="clr-namespace:LenayGG_Movil.Views.Tools"
              Title="TabbedPageContainer"
-             BarTextColor="White"
-             BarBackgroundColor="Green"
-             SelectedTabColor="Cyan"
-             UnselectedTabColor="White"
+             BackgroundColor="White"
+             BarTextColor="black"
+             BarBackgroundColor="#F0F0F0"
+             SelectedTabColor="#67AE08"
+             UnselectedTabColor="black"
              NavigationPage.HasNavigationBar="False">
 
     <Main:Main Title="Inicio"

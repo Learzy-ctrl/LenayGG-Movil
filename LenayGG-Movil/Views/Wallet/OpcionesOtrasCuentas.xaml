@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="LenayGG_Movil.Views.Wallet.OpcionesOtrasCuentas"
+             xmlns:local="clr-namespace:LenayGG_Movil">
+    <VerticalStackLayout>
+        <Grid Padding="0,30,0,0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="3*"/>
+                <ColumnDefinition Width="10*"/>
+            </Grid.ColumnDefinitions>
+
+            <Image Source="card"
+                   WidthRequest="25" 
+                   VerticalOptions="End"
+                   HorizontalOptions="End"
+                   Margin="0,0,10,0"/>
+            <StackLayout Margin="0,0,30,0" Grid.Column="1">
+                <local:BorderLessEntry Placeholder="Saldo Inicial" PlaceholderColor="Gray" TextColor="Black"/>
+                <BoxView HeightRequest="2" Color="Black"/>
+            </StackLayout>
+        </Grid>
+
+        <Grid Padding="0,30,0,0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="3*"/>
+                <ColumnDefinition Width="10*"/>
+            </Grid.ColumnDefinitions>
+
+            <Image Source="card"
+                   WidthRequest="25" 
+                   VerticalOptions="End"
+                   HorizontalOptions="End"
+                   Margin="0,0,10,0"/>
+            <StackLayout Margin="0,0,30,0" Grid.Column="1">
+                <local:BorderLessEntry Placeholder="Color" PlaceholderColor="Gray" TextColor="Black"/>
+                <BoxView HeightRequest="2" Color="Black"/>
+            </StackLayout>
+        </Grid>
+    </VerticalStackLayout>
+</ContentView>

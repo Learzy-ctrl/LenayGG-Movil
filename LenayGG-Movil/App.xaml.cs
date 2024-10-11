@@ -3,6 +3,7 @@
 using LenayGG_Movil.Infrastructure;
 using LenayGG_Movil.Views;
 using LenayGG_Movil.Views.Login;
+using LenayGG_Movil.Views.Wallet;
 
 namespace LenayGG_Movil
 {
@@ -12,7 +13,7 @@ namespace LenayGG_Movil
         {
             InitializeComponent();
             //MainPage = new NavigationPage(new SignIn(login));
-            MainPage = new TabbedPageContainer();
+            MainPage = new EditarBilletera();
         }
     }
 }

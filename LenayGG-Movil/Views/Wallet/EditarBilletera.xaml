@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="LenayGG_Movil.Views.Wallet.EditarBilletera"
+             Title="Editar Billetera">
+    <VerticalStackLayout Padding="20">
+        <Label 
+            Text="Editar Billetera"
+            FontSize="32"
+            FontAttributes="Bold"
+            HorizontalOptions="Center"
+            VerticalOptions="Start" />
+
+        <Label 
+            Text="Nombre:"
+            FontSize="20"
+            VerticalOptions="Start" />
+        <Entry x:Name="NombreBilletera" 
+               Placeholder="Ingresa el nombre de la billetera" 
+               FontSize="18" 
+               Margin="0,0,0,20" />
+
+        <Label 
+            Text="Selecciona un Color:"
+            FontSize="20"
+            VerticalOptions="Start" />
+
+   
+
+        <Button 
+            Text="+" 
+            BackgroundColor="#4CAF50" 
+            TextColor="White" 
+            FontSize="24"
+            WidthRequest="60" 
+            HeightRequest="60" 
+            CornerRadius="60"
+           AbsoluteLayout.LayoutBounds="0.9,0.9,AutoSize,AutoSize" 
+AbsoluteLayout.LayoutFlags="PositionProportional"
+            Clicked="OnAddButtonClicked" />
+    </VerticalStackLayout>
+</ContentPage>

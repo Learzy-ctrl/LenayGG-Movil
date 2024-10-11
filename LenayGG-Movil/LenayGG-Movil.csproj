@@ -93,6 +93,12 @@
 	  <MauiXaml Update="Views\Tools\Tools.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
+	  <MauiXaml Update="Views\Wallet\CrearBilletera.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\Wallet\EditarBilletera.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	  <MauiXaml Update="Views\Wallet\Wallets.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>

@@ -26,7 +26,9 @@
                HorizontalOptions="End"
                Margin="0,0,10,0"/>
             <StackLayout Margin="0,0,30,0" Grid.Column="1">
-                <local:BorderLessEntry Placeholder="Nombre de billetera" PlaceholderColor="Gray" TextColor="Black"/>
+                <Label Text="Nombre"
+                       TextColor="Black"/>
+                <local:BorderLessEntry Placeholder="Nombre de billetera" Text="{Binding WalletDto.Nombre}" PlaceholderColor="Gray" TextColor="Black"/>
                 <BoxView HeightRequest="2" Color="Black"/>
             </StackLayout>
         </Grid>
@@ -43,7 +45,9 @@
            HorizontalOptions="End"
            Margin="0,0,10,0"/>
             <StackLayout Margin="0,0,30,0" Grid.Column="1">
-                <local:BorderLessEntry Placeholder="Limite de credito" PlaceholderColor="Gray" TextColor="Black"/>
+                <Label Text="Limite de credito"
+                       TextColor="Black"/>
+                <local:BorderLessEntry Placeholder="Limite de credito" Text="{Binding WalletDto.LimiteCredito}" Keyboard="Numeric" PlaceholderColor="Gray" TextColor="Black"/>
                 <BoxView HeightRequest="2" Color="Black"/>
             </StackLayout>
         </Grid>
@@ -63,7 +67,7 @@
             <StackLayout Margin="0,0,30,0" Grid.Column="1">
                 <Label Text="Fecha de pago"
                TextColor="Black"/>
-                <local:DatePickerUnderlineColor  TextColor="Black"/>
+                <local:DatePickerUnderlineColor Date="{Binding WalletDto.FechaDePago}" TextColor="Black"/>
                 <BoxView HeightRequest="2" Color="Black"/>
             </StackLayout>
         </Grid>
@@ -84,7 +88,7 @@
             <StackLayout Margin="0,0,30,0" Grid.Column="1">
                 <Label Text="Fecha de corte"
                TextColor="Black"/>
-                <local:DatePickerUnderlineColor  TextColor="Black"/>
+                <local:DatePickerUnderlineColor Date="{Binding WalletDto.FechaCorte}" TextColor="Black"/>
                 <BoxView HeightRequest="2" Color="Black"/>
             </StackLayout>
         </Grid>
@@ -101,7 +105,9 @@
            HorizontalOptions="End"
            Margin="0,0,10,0"/>
             <StackLayout Margin="0,0,30,0" Grid.Column="1">
-                <local:BorderLessEntry Placeholder="Color" PlaceholderColor="Gray" TextColor="Black"/>
+                <Label Text="Tasa de interes (%)"
+                       TextColor="Black"/>
+                <local:BorderLessEntry Placeholder="Tasa de interes (%)" Text="{Binding WalletDto.TazaInteres}" Keyboard="Numeric" PlaceholderColor="Gray" TextColor="Black"/>
                 <BoxView HeightRequest="2" Color="Black"/>
             </StackLayout>
         </Grid>
@@ -118,13 +124,15 @@
            HorizontalOptions="End"
            Margin="0,0,10,0"/>
             <StackLayout Margin="0,0,30,0" Grid.Column="1">
-                <local:BorderLessEntry Placeholder="Tasa de interes (%)" PlaceholderColor="Gray" TextColor="Black"/>
+                <Label Text="Color"
+                       TextColor="Black"/>
+                <local:BorderLessEntry Placeholder="Color" Text="{Binding WalletDto.Color}" PlaceholderColor="Gray" TextColor="Black"/>
                 <BoxView HeightRequest="2" Color="Black"/>
             </StackLayout>
         </Grid>
 
 
-        <Button Text="+"
+        <Button Text="✔"
             TextColor="White"
             FontAttributes="Bold"
             FontSize="Title"
@@ -133,7 +141,8 @@
             Padding="30,20,30,20"
             VerticalOptions="End"
             HorizontalOptions="EndAndExpand"
-            CornerRadius="50"/>
+            CornerRadius="50"
+                Command="{Binding UpdateWalletCommand}"/>
 
     </VerticalStackLayout>
 </ContentPage>

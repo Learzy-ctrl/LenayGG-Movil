@@ -1,45 +1,34 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="LenayGG_Movil.Views.Wallet.NoWallets"
-             Title="NoWallets"         
-             BackgroundColor="White">
+             x:Class="LenayGG_Movil.Views.Wallet.NoWallets">
+    <RefreshView IsRefreshing="{Binding isRefreshing}"
+                 Command="{Binding RefreshPageCommand}">
+        <ScrollView>
+            <Grid VerticalOptions="CenterAndExpand">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="10*"/>
+                </Grid.RowDefinitions>
 
-
-    <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="4*"/>
-            <RowDefinition Height="6*"/>
-        </Grid.RowDefinitions>
-
-        <Frame Grid.Row="0"
-           BackgroundColor="White"
-           BorderColor="White">
-            <Frame HorizontalOptions="Start"
-               VerticalOptions="Start"
-               CornerRadius="50"
-               BackgroundColor="#67AE08"
-               BorderColor="#67AE08"
-               Padding="10  ">
-                <Label Text="Billeteras"
-                   FontSize="Subtitle"/>
-            </Frame>
-        </Frame>
-
-        <VerticalStackLayout Grid.Row="1">
-            <Frame BackgroundColor="White"
+                <VerticalStackLayout Grid.Row="1">
+                    <Frame BackgroundColor="White"
                BorderColor="White"
                Margin="25,0,25,0">
-                <Label Text="No tienes registrada ninguna billetera crea una ahora mismo"
+                        <Label Text="No tienes registrada ninguna billetera crea una ahora mismo"
                    TextColor="black"/>
-            </Frame>
+                    </Frame>
 
-            <Button Text="Crear billetera" 
-        HorizontalOptions="Center"
-        VerticalOptions="Center"
-        CornerRadius="25"
-        BackgroundColor="#9FC769"
-        TextColor="White"/>
-        </VerticalStackLayout>
-    </Grid>
-</ContentPage>
+                    <Button Text="Crear billetera"
+                    HorizontalOptions="Center"
+                    VerticalOptions="Center"
+                    CornerRadius="25"
+                    BackgroundColor="#9FC769"
+                    TextColor="White"
+                    Command="{Binding GoToCreateWalletCommand}"/>
+                </VerticalStackLayout>
+            </Grid>
+        </ScrollView>
+
+    </RefreshView>
+
+</ContentView>

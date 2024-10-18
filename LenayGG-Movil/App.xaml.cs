@@ -3,17 +3,24 @@
 using LenayGG_Movil.Infrastructure;
 using LenayGG_Movil.Views;
 using LenayGG_Movil.Views.Login;
-using LenayGG_Movil.Views.Wallet;
 
 namespace LenayGG_Movil
 {
     public partial class App : Application
     {
-        public App(ILogin login)
+        public App(TabbedPageContainer tabbedPageContainer, SignIn signIn)
         {
             InitializeComponent();
-            //MainPage = new NavigationPage(new SignIn(login));
-            MainPage = new EditarBilleteraCredito();
+
+            var Token = SecureStorage.GetAsync("Token").Result;
+            if (!string.IsNullOrEmpty(Token))
+            {
+                MainPage = tabbedPageContainer;
+            }
+            else
+            {
+                MainPage = new NavigationPage(signIn);
+            }
 
             Microsoft.Maui.Handlers.EntryHandler.Mapper.AppendToMapping(nameof(BorderLessEntry), (handler, view) =>
             {

@@ -16,7 +16,9 @@
            HorizontalOptions="End"
            Margin="0,0,10,0"/>
             <StackLayout Margin="0,0,30,0" Grid.Column="1">
-                <local:BorderLessEntry Placeholder="Limite de credito" PlaceholderColor="Gray" TextColor="Black"/>
+                <Label Text="Limite de credito"
+                       TextColor="Black"/>
+                <local:BorderLessEntry Placeholder="Limite de credito" Text="{Binding _LimiteCredito}" Keyboard="Numeric" PlaceholderColor="Gray" TextColor="Black"/>
                 <BoxView HeightRequest="2" Color="Black"/>
             </StackLayout>
         </Grid>
@@ -36,7 +38,7 @@
             <StackLayout Margin="0,0,30,0" Grid.Column="1">
                 <Label Text="Fecha de pago"
                TextColor="Black"/>
-                <local:DatePickerUnderlineColor  TextColor="Black"/>
+                <local:DatePickerUnderlineColor  TextColor="Black" Date="{Binding _FechaPago}"/>
                 <BoxView HeightRequest="2" Color="Black"/>
             </StackLayout>
         </Grid>
@@ -57,7 +59,7 @@
             <StackLayout Margin="0,0,30,0" Grid.Column="1">
                 <Label Text="Fecha de corte"
                TextColor="Black"/>
-                <local:DatePickerUnderlineColor  TextColor="Black"/>
+                <local:DatePickerUnderlineColor  TextColor="Black" Date="{Binding _FechaCorte}"/>
                 <BoxView HeightRequest="2" Color="Black"/>
             </StackLayout>
         </Grid>
@@ -74,7 +76,10 @@
            HorizontalOptions="End"
            Margin="0,0,10,0"/>
             <StackLayout Margin="0,0,30,0" Grid.Column="1">
-                <local:BorderLessEntry Placeholder="Tasa de interes (%)" PlaceholderColor="Gray" TextColor="Black"/>
+                <Label Text="Tasa de interes (%)"
+                       TextColor="Black"/>
+                <local:BorderLessEntry Placeholder="Tasa de interes (%)" PlaceholderColor="Gray" Text="{Binding _TasaInteres}" 
+                                       Keyboard="Numeric" TextColor="Black"/>
                 <BoxView HeightRequest="2" Color="Black"/>
             </StackLayout>
         </Grid>
@@ -91,7 +96,7 @@
            HorizontalOptions="End"
            Margin="0,0,10,0"/>
             <StackLayout Margin="0,0,30,0" Grid.Column="1">
-                <local:BorderLessEntry Placeholder="Tasa de interes (%)" PlaceholderColor="Gray" TextColor="Black"/>
+                <local:BorderLessEntry Placeholder="Color" Text="{Binding _Color}" PlaceholderColor="Gray" TextColor="Black"/>
                 <BoxView HeightRequest="2" Color="Black"/>
             </StackLayout>
         </Grid>

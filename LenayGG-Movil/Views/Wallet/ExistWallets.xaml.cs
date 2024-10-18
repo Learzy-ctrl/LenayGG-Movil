@@ -1,8 +1,8 @@
 namespace LenayGG_Movil.Views.Wallet;
 
-public partial class NoWallets : ContentView
+public partial class ExistWallets : ContentView
 {
-	public NoWallets()
+	public ExistWallets()
 	{
 		InitializeComponent();
 	}

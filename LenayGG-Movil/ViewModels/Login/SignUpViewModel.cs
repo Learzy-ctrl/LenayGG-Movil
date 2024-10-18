@@ -1,27 +1,19 @@
-﻿
-
-using CommunityToolkit.Mvvm.ComponentModel;
-using CommunityToolkit.Mvvm.Input;
+﻿using CommunityToolkit.Mvvm.Input;
 using LenayGG_Movil.Infrastructure;
 using System.Windows.Input;
 
 namespace LenayGG_Movil.ViewModels.Login
 {
-    public class SignUpViewModel : ObservableObject
+    public class SignUpViewModel : BaseViewModel
     {
         private readonly ILogin _login;
-        private readonly ContentPage _contentPage;
         public ICommand RegisterCommand { get; private set; }
-        public SignUpViewModel(ILogin login, ContentPage page)
+        public SignUpViewModel(ILogin login)
         {
             _login = login;
-            _contentPage = page;
             RegisterCommand = new AsyncRelayCommand(Register);
         }
 
-
-        
-        
         #region Variables
         private string userName;
         private string password;
@@ -33,67 +25,32 @@ namespace LenayGG_Movil.ViewModels.Login
         #region Objects
         public string UserName
         {
-            get => userName;
-            set
-            {
-                if (userName != value)
-                {
-                    userName = value;
-                    OnPropertyChanged();
-                }
-            }
+            get { return userName; }
+            set { SetValue(ref userName, value); }
         }
 
         public string Password
         {
-            get => password;
-            set
-            {
-                if (password != value)
-                {
-                    password = value;
-                    OnPropertyChanged();
-                }
-            }
+            get { return password; }
+            set { SetValue(ref password, value); }
         }
 
         public string Email
         {
-            get => email;
-            set
-            {
-                if (email != value)
-                {
-                    email = value;
-                    OnPropertyChanged();
-                }
-            }
+            get { return email; }
+            set { SetValue(ref email, value); }
         }
 
         public DateTime BirthDate
         {
-            get => birthDate;
-            set
-            {
-                if (birthDate != value)
-                {
-                    birthDate = value;
-                    OnPropertyChanged();
-                }
-            }
+            get { return birthDate; }
+            set { SetValue(ref birthDate, value); }
         }
 
         public bool IsLoading
         {
-            get => isLoading;
-            set
-            {
-                if (isLoading != value)
-                {
-                    isLoading = value;
-                    OnPropertyChanged();
-                }
-            }
+            get { return isLoading; }
+            set { SetValue(ref isLoading, value); }
         }
         #endregion
 
@@ -102,13 +59,13 @@ namespace LenayGG_Movil.ViewModels.Login
         {
             IsLoading = true;
             var response = await _login.SignUp(UserName, BirthDate, Email, Password);
-            if (response.tipoError != 0)
+           if (response.NumError != 0)
             {
-                await _contentPage.DisplayAlert("Error", "Ups, algo salio mal, intentalo mas tarde", "OK");
+                await DisplayAlert("Error", "Ups, algo salio mal, intentalo mas tarde", "OK");
             }
             else
             {
-                await _contentPage.DisplayAlert("Exito", "Se ha registrado el usuario correctamente", "OK");
+                await DisplayAlert("Exito", "Se ha registrado el usuario correctamente", "OK");
             }
             IsLoading = false;
         }

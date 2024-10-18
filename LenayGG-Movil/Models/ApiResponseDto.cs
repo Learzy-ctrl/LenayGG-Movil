@@ -8,7 +8,7 @@ namespace LenayGG_Movil.Models
 {
     public class ApiResponseDto
     {
-        public string mensaje {  get; set; }
-        public int tipoError { get; set; }
+        public int NumError { get; set; }
+        public string Resultado { get; set; }
     }
 }

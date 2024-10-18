@@ -1,13 +1,12 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="LenayGG_Movil.Views.Wallet.CrearBilletera"
-             Title="Crear Nueva Billetera"
+             x:Class="LenayGG_Movil.Views.Wallet.EditarBilletera"
+             Title="EditarBilletera"
              xmlns:local="clr-namespace:LenayGG_Movil"
              BackgroundColor="White">
-
     <VerticalStackLayout>
-        <Label Text="Crear nueva billetera"
+        <Label Text="Editar billetera"
                TextColor="Black"
                FontAttributes="Bold"
                FontSize="20"
@@ -21,12 +20,14 @@
             </Grid.ColumnDefinitions>
 
             <Image Source="card"
-                   WidthRequest="25" 
-                   VerticalOptions="End"
-                   HorizontalOptions="End"
-                   Margin="0,0,10,0"/>
+           WidthRequest="25" 
+           VerticalOptions="End"
+           HorizontalOptions="End"
+           Margin="0,0,10,0"/>
             <StackLayout Margin="0,0,30,0" Grid.Column="1">
-                <local:BorderLessEntry Placeholder="Nombre de billetera" PlaceholderColor="Gray" Text="{Binding _Nombre}" TextColor="Black"/>
+                <Label Text="Nombre"
+                       TextColor="Black"/>
+                <local:BorderLessEntry Placeholder="Nombre de billetera" Text="{Binding WalletDto.Nombre}" PlaceholderColor="Gray" TextColor="Black"/>
                 <BoxView HeightRequest="2" Color="Black"/>
             </StackLayout>
         </Grid>
@@ -38,32 +39,30 @@
             </Grid.ColumnDefinitions>
 
             <Image Source="card"
-           WidthRequest="25" 
-           VerticalOptions="End"
-           HorizontalOptions="End"
-           Margin="0,0,10,0"/>
-
+       WidthRequest="25" 
+       VerticalOptions="End"
+       HorizontalOptions="End"
+       Margin="0,0,10,0"/>
             <StackLayout Margin="0,0,30,0" Grid.Column="1">
-                <local:PickerUnderLineColor Title="Tipo de cuenta" TitleColor="Gray" ItemsSource="{Binding Opciones}" SelectedItem="{Binding _OpcionSeleccionada}" TextColor="Black"/>
+                <Label Text="Color"
+                       TextColor="Black"/>
+                <local:BorderLessEntry Placeholder="Color" Text="{Binding WalletDto.Color}" PlaceholderColor="Gray" TextColor="Black"/>
                 <BoxView HeightRequest="2" Color="Black"/>
             </StackLayout>
         </Grid>
 
-        <ContentView x:Name="CardOption" Content="{Binding OptionCard}"/>
 
-
-        <Button Text="+"
-                TextColor="White"
-                FontAttributes="Bold"
-                FontSize="Title"
-                BackgroundColor="#67AE08"
-                Margin="0,80,20,0"
-                Padding="30,20,30,20"
-                VerticalOptions="End"
-                HorizontalOptions="EndAndExpand"
-                CornerRadius="50"
-                Command="{Binding CreateWalletCommand}"/>
+        <Button Text="✔"
+        TextColor="White"
+        FontAttributes="Bold"
+        FontSize="Title"
+        BackgroundColor="#67AE08"
+        Margin="0,80,20,0"
+        Padding="30,20,30,20"
+        VerticalOptions="End"
+        HorizontalOptions="EndAndExpand"
+        CornerRadius="50"
+                Command="{Binding UpdateWalletCommand}"/>
 
     </VerticalStackLayout>
-
 </ContentPage>

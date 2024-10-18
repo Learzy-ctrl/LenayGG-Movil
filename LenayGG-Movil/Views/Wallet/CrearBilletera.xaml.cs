@@ -1,15 +1,14 @@
-using System;
-using System.Collections.Generic;
-using Microsoft.Maui.Controls;
+using LenayGG_Movil.ViewModels.Wallet;
 
 namespace LenayGG_Movil.Views.Wallet
 {
     public partial class CrearBilletera : ContentPage
     {
-        public CrearBilletera()
+        public CrearBilletera(CrearBilleteraViewModel crearBilleteraViewModel)
         {
             InitializeComponent();
-            CardOption.Content = new OpcionesOtrasCuentas();
+            crearBilleteraViewModel._navigation = this.Navigation;
+            BindingContext = crearBilleteraViewModel;
         }
     }
 }

@@ -32,7 +32,7 @@
                Margin="20,0,20,0"
                Padding="5"
                CornerRadius="50">
-                    <Label Text="Santander"
+                    <Label Text="{Binding WalletDto.Nombre}"
                    TextColor="Black"
                    FontSize="Title"
                    FontAttributes="Bold"
@@ -51,7 +51,7 @@
                    VerticalOptions="End"
                    Padding="0,0,5,10"/>
                     <Label Grid.Column="1"
-                   Text="$20,000.25"
+                   Text="{Binding WalletDto.Saldo}"
                    FontSize="25"
                    FontAttributes="Bold"/>
                     <Frame Grid.Column="2"
@@ -71,7 +71,7 @@
                     <HorizontalStackLayout Grid.Column="0">
                         <Label Text="Gastado hoy:  "
                        FontSize="12"/>
-                        <Label Text="$10,523.00"
+                        <Label Text="{Binding WalletDto.Saldo}"
                        FontSize="12"
                        FontAttributes="Bold"/>
                     </HorizontalStackLayout>
@@ -92,6 +92,9 @@
                         <BoxView HeightRequest="2"
                              Color="Black"/>
                     </StackLayout>
+                    <Frame.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding GoToEditarBilleteraCommand}" />
+                    </Frame.GestureRecognizers>
                 </Frame>
 
                 <Frame Margin="10,0,10,10" BackgroundColor="Transparent"
@@ -103,6 +106,9 @@
                         <BoxView HeightRequest="2"
                              Color="Black"/>
                     </StackLayout>
+                    <Frame.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding DeleteWalletCommand}" />
+                    </Frame.GestureRecognizers>
                 </Frame>
 
 
@@ -115,12 +121,13 @@
             <Button VerticalOptions="EndAndExpand"
                     HorizontalOptions="End"
                     CornerRadius="50"
-                    Text="+"
+                    Text="✔"
                     TextColor="White"
                     BackgroundColor="#67AE08"
                     FontAttributes="Bold"
                     FontSize="Title"
-                    Padding="6"/>
+                    Padding="6"
+                    Command="{Binding ReturnPageCommand}"/>
         </Frame>
     </Grid>
 </ContentPage>

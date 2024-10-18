@@ -5,9 +5,9 @@ namespace LenayGG_Movil.Views.Login;
 
 public partial class SignUp : ContentPage
 {
-	public SignUp(ILogin login)
+	public SignUp(SignUpViewModel signUpViewModel)
 	{
 		InitializeComponent();
-		BindingContext = new SignUpViewModel(login, this);
+		BindingContext = signUpViewModel;
 	}
 }

@@ -1,9 +1,11 @@
 ﻿using LenayGG_Movil.Infrastructure;
 using LenayGG_Movil.Services;
 using LenayGG_Movil.ViewModels.Login;
+using LenayGG_Movil.ViewModels.Main;
 using LenayGG_Movil.ViewModels.Wallet;
 using LenayGG_Movil.Views;
 using LenayGG_Movil.Views.Login;
+using LenayGG_Movil.Views.Main.Inicio;
 using LenayGG_Movil.Views.Wallet;
 
 namespace LenayGG_Movil
@@ -58,6 +60,11 @@ namespace LenayGG_Movil
             builder.Services.AddTransient<EditarBilletera>();
             builder.Services.AddTransient<EditarBilleteraCredito>();
             builder.Services.AddTransient<EditarBilleteraViewModel>();
+
+            //Inicio
+            builder.Services.AddTransient<InicioLayout>();
+            builder.Services.AddTransient<InicioViewModel>();
+
             return builder.Build();
         }
     }

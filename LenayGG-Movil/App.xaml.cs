@@ -3,6 +3,7 @@
 using LenayGG_Movil.Infrastructure;
 using LenayGG_Movil.Views;
 using LenayGG_Movil.Views.Login;
+using LenayGG_Movil.Views.Main.Inicio;
 
 namespace LenayGG_Movil
 {
@@ -12,6 +13,7 @@ namespace LenayGG_Movil
         {
             InitializeComponent();
 
+            
             var Token = SecureStorage.GetAsync("Token").Result;
             if (!string.IsNullOrEmpty(Token))
             {
@@ -21,6 +23,7 @@ namespace LenayGG_Movil
             {
                 MainPage = new NavigationPage(signIn);
             }
+
 
             Microsoft.Maui.Handlers.EntryHandler.Mapper.AppendToMapping(nameof(BorderLessEntry), (handler, view) =>
             {

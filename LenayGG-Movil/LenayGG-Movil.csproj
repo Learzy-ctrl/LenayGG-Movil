@@ -84,7 +84,13 @@
 	  <MauiXaml Update="Views\Login\SignUp.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="Views\Main\Main.xaml">
+	  <MauiXaml Update="Views\Main\Inicio\ExistHistory.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\Main\Inicio\InicioLayout.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\Main\Inicio\NoHistory.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Views\NoConnection.xaml">
@@ -135,6 +141,10 @@
 	  <MauiXaml Update="Views\Wallet\Wallets.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Folder Include="Views\Main\Transacciones\" />
 	</ItemGroup>
 
 </Project>

@@ -10,5 +10,7 @@ namespace LenayGG_Movil.Infrastructure
     public interface ILogin
     {
         Task<ApiResponseDto> SignUp(string username, DateTime birthDate, string email, string password);
+
+        Task<ApiResponseDto> SignIn(string _email, string _password);
     }
 }

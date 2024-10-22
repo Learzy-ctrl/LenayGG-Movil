@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="LenayGG_Movil.Views.NoConnection">
+    <RefreshView IsRefreshing="{Binding isRefreshing}"
+             Command="{Binding RefreshPageCommand}">
+        <ScrollView>
+            <VerticalStackLayout>
+                <Label 
+    Text="Error de conexion, conectate a la red e intenta de nuevo"
+    VerticalOptions="Center" 
+    HorizontalOptions="Center" 
+        TextColor="Black"/>
+            </VerticalStackLayout>
+        </ScrollView>
+    </RefreshView>
+</ContentView>

@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="LenayGG_Movil.Views.Wallet.EditarBilletera"
+             Title="EditarBilletera"
+             xmlns:local="clr-namespace:LenayGG_Movil"
+             BackgroundColor="White">
+    <VerticalStackLayout>
+        <Label Text="Editar billetera"
+               TextColor="Black"
+               FontAttributes="Bold"
+               FontSize="20"
+               HorizontalOptions="CenterAndExpand"
+               Padding="0,15,0,0"/>
+
+        <Grid Padding="0,30,0,0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="3*"/>
+                <ColumnDefinition Width="10*"/>
+            </Grid.ColumnDefinitions>
+
+            <Image Source="card"
+           WidthRequest="25" 
+           VerticalOptions="End"
+           HorizontalOptions="End"
+           Margin="0,0,10,0"/>
+            <StackLayout Margin="0,0,30,0" Grid.Column="1">
+                <Label Text="Nombre"
+                       TextColor="Black"/>
+                <local:BorderLessEntry Placeholder="Nombre de billetera" Text="{Binding WalletDto.Nombre}" PlaceholderColor="Gray" TextColor="Black"/>
+                <BoxView HeightRequest="2" Color="Black"/>
+            </StackLayout>
+        </Grid>
+
+        <Grid Padding="0,30,0,0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="3*"/>
+                <ColumnDefinition Width="10*"/>
+            </Grid.ColumnDefinitions>
+
+            <Image Source="card"
+       WidthRequest="25" 
+       VerticalOptions="End"
+       HorizontalOptions="End"
+       Margin="0,0,10,0"/>
+            <StackLayout Margin="0,0,30,0" Grid.Column="1">
+                <Label Text="Color"
+                       TextColor="Black"/>
+                <local:BorderLessEntry Placeholder="Color" Text="{Binding WalletDto.Color}" PlaceholderColor="Gray" TextColor="Black"/>
+                <BoxView HeightRequest="2" Color="Black"/>
+            </StackLayout>
+        </Grid>
+
+
+        <Button Text="✔"
+        TextColor="White"
+        FontAttributes="Bold"
+        FontSize="Title"
+        BackgroundColor="#67AE08"
+        Margin="0,80,20,0"
+        Padding="30,20,30,20"
+        VerticalOptions="End"
+        HorizontalOptions="EndAndExpand"
+        CornerRadius="50"
+                Command="{Binding UpdateWalletCommand}"/>
+
+    </VerticalStackLayout>
+</ContentPage>

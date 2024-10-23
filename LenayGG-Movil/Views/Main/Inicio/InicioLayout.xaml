@@ -98,6 +98,7 @@
             </Grid>
         </Frame>
 
+        <ContentView Grid.Row="1" Content="{Binding Content}"/>
         <Button Grid.Row="1"
                 VerticalOptions="EndAndExpand"
                 HorizontalOptions="EndAndExpand"
@@ -107,7 +108,8 @@
                 Text="+"
                 FontSize="25"
                 Padding="20,10,20,10"
-                BackgroundColor="#67AE08"/>
-        <ContentView Grid.Row="1" Content="{Binding Content}"/>
+                BackgroundColor="#67AE08"
+                Command="{Binding GoToTransaccionCommand}"/>
+        
     </Grid>
 </ContentPage>

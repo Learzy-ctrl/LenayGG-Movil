@@ -7,6 +7,7 @@ public partial class InicioLayout : ContentPage
 	public InicioLayout(InicioViewModel inicioViewModel)
 	{
 		InitializeComponent();
+		inicioViewModel._navigation = this.Navigation;
 		BindingContext = inicioViewModel;
 	}
 }

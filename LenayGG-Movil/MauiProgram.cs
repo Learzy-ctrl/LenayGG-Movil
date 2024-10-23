@@ -6,6 +6,7 @@ using LenayGG_Movil.ViewModels.Wallet;
 using LenayGG_Movil.Views;
 using LenayGG_Movil.Views.Login;
 using LenayGG_Movil.Views.Main.Inicio;
+using LenayGG_Movil.Views.Main.Transacciones;
 using LenayGG_Movil.Views.Wallet;
 
 namespace LenayGG_Movil
@@ -64,6 +65,10 @@ namespace LenayGG_Movil
             //Inicio
             builder.Services.AddTransient<InicioLayout>();
             builder.Services.AddTransient<InicioViewModel>();
+
+            //Transacciones
+            builder.Services.AddTransient<TransaccionLayOut>();
+            builder.Services.AddTransient<TransaccionesViewModel>();
 
             return builder.Build();
         }

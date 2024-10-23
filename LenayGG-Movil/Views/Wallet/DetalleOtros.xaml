@@ -21,8 +21,8 @@
                    HorizontalOptions="CenterAndExpand"
                    VerticalOptions="StartAndExpand"/>
         </Frame>
-        <Frame BackgroundColor="#C7696B"
-       BorderColor="#C7696B"
+        <Frame BackgroundColor="{Binding WalletDto.Color}"
+       BorderColor="Transparent"
        Margin="30,0,30,0"
        CornerRadius="25"
                Grid.Row="1">

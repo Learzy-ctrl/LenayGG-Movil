@@ -1,9 +1,14 @@
-﻿
-
-using LenayGG_Movil.Infrastructure;
+﻿using LenayGG_Movil.Infrastructure;
 using LenayGG_Movil.Views;
 using LenayGG_Movil.Views.Login;
 using LenayGG_Movil.Views.Main.Inicio;
+using Microsoft.Maui.Controls.PlatformConfiguration;
+using Microsoft.Maui.Handlers;
+using LenayGG_Movil.Views.Main.Transacciones;
+
+#if ANDROID
+using AndroidX.AppCompat.Widget;
+#endif
 
 namespace LenayGG_Movil
 {
@@ -13,7 +18,7 @@ namespace LenayGG_Movil
         {
             InitializeComponent();
 
-            
+
             var Token = SecureStorage.GetAsync("Token").Result;
             if (!string.IsNullOrEmpty(Token))
             {
@@ -25,20 +30,34 @@ namespace LenayGG_Movil
             }
 
 
+#if ANDROID
+
+
             Microsoft.Maui.Handlers.EntryHandler.Mapper.AppendToMapping(nameof(BorderLessEntry), (handler, view) =>
             {
-                handler.PlatformView.SetBackgroundColor(Android.Graphics.Color.Transparent);
+                if (handler.PlatformView is AppCompatEditText editText)
+                {
+                    editText.Background = null;  // Esto eliminará el fondo
+                }
             });
+
 
             Microsoft.Maui.Handlers.PickerHandler.Mapper.AppendToMapping(nameof(PickerUnderLineColor), (handler, view) =>
             {
-                handler.PlatformView.SetBackgroundColor(Android.Graphics.Color.Transparent);
+                if (handler.PlatformView is AppCompatEditText editText)
+                {
+                    editText.Background = null;  // Esto eliminará el fondo
+                }
             });
 
             Microsoft.Maui.Handlers.DatePickerHandler.Mapper.AppendToMapping(nameof(DatePickerUnderlineColor), (handler, view) =>
             {
-                handler.PlatformView.SetBackgroundColor(Android.Graphics.Color.Transparent);
+                if (handler.PlatformView is AppCompatEditText editText)
+                {
+                    editText.Background = null;  // Esto eliminará el fondo
+                }
             });
+#endif
         }
     }
 }

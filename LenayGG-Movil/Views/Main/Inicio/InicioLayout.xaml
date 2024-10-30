@@ -13,7 +13,8 @@
         <Frame Grid.Row="0"
                CornerRadius="50"
                Margin="0,-50,0,0"
-               BackgroundColor="#67AE08">
+               BackgroundColor="#67AE08"
+               BorderColor="Transparent">
             <Grid Padding="0,50,0,0">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="7*"/>

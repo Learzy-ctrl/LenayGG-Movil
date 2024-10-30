@@ -1,7 +1,10 @@
-﻿using CommunityToolkit.Mvvm.Input;
+﻿using Acr.UserDialogs;
+using CommunityToolkit.Mvvm.Input;
+using LenayGG_Movil.Models.TransactionModel;
 using LenayGG_Movil.Views.Main.Transacciones;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Globalization;
 using System.Linq;
 using System.Text;
@@ -12,14 +15,36 @@ namespace LenayGG_Movil.ViewModels.Main
 {
     public class TransaccionesViewModel : BaseViewModel
     {
-        public TransaccionesViewModel()
+        public INavigation _navigation { get; set; }
+        private readonly IServiceProvider _serviceProvider;
+        public TransaccionesViewModel(IServiceProvider serviceProvider)
         {
             ChangeToGastoCommand = new RelayCommand(ChangeToGasto);
             ChangeToIngresoCommand = new RelayCommand(ChangeToIngreso);
             ChangeToTransferenciaCommand = new RelayCommand(ChangeToTransferencia);
+            ShowCategoriesCommand = new AsyncRelayCommand(ShowCategories);
             ChangeToGasto();
+            _serviceProvider = serviceProvider;
+
+            MessagingCenter.Subscribe<CategoriaBottomViewModel, ColorItem>(this, "ColorItemSelected", (sender, colorItem) =>
+            {
+                SelectedColorItem = colorItem;
+            });
         }
 
+        ~TransaccionesViewModel()
+        {
+            MessagingCenter.Unsubscribe<CategoriaBottomViewModel, ColorItem>(this, "ColorItemSelected");
+        }
+
+        private ColorItem _selectedColorItem;
+        public ColorItem SelectedColorItem
+        {
+            get { return _selectedColorItem; }
+            set { 
+                SetValue(ref _selectedColorItem, value);
+            }
+        }
         #region Variables
         private const string _gastoTitulo = "Dinero gastado";
         private const string _ingresoTitulo = "Ingresar Dinero";
@@ -59,12 +84,22 @@ namespace LenayGG_Movil.ViewModels.Main
             Titulo = _transferenciaTitulo;
             Content = new Transferir();
         }
+
+        public async Task ShowCategories()
+        {
+            UserDialogs.Instance.ShowLoading("Cargando");
+            var bottomSheet = _serviceProvider.GetService<CategoriaBottomSheet>();
+            await bottomSheet.ShowAsync();
+            UserDialogs.Instance.HideLoading();
+            
+        }
         #endregion
 
         #region Commands
         public ICommand ChangeToGastoCommand { get; private set; }
         public ICommand ChangeToIngresoCommand { get; private set; }
         public ICommand ChangeToTransferenciaCommand { get; private set; }
+        public ICommand ShowCategoriesCommand { get; private set; }
         #endregion
     }
 }

@@ -7,6 +7,7 @@ public partial class TransaccionLayOut : ContentPage
 	public TransaccionLayOut(TransaccionesViewModel transaccionesViewModel)
 	{
 		InitializeComponent();
+		transaccionesViewModel._navigation = this.Navigation;
 		BindingContext = transaccionesViewModel;
 	}
 }

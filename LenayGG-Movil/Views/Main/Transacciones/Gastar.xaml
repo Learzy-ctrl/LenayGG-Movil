@@ -58,7 +58,7 @@
             <StackLayout Margin="0,0,30,0" Grid.Column="1">
                 <Label Text="Categora"
                        TextColor="Black"/>
-                <local:BorderLessEntry Placeholder="Selecciona Categoria" PlaceholderColor="Gray"
+                <local:BorderLessEntry Placeholder="Selecciona Categoria" IsReadOnly="True" Text="{Binding SelectedColorItem.Nombre}" PlaceholderColor="Gray"
                                        Keyboard="Text" TextColor="Black"/>
                 <BoxView HeightRequest="2" Color="Black"/>
             </StackLayout>

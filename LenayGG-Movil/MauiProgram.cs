@@ -8,6 +8,7 @@ using LenayGG_Movil.Views.Login;
 using LenayGG_Movil.Views.Main.Inicio;
 using LenayGG_Movil.Views.Main.Transacciones;
 using LenayGG_Movil.Views.Wallet;
+using The49.Maui.BottomSheet;
 
 namespace LenayGG_Movil
 {
@@ -18,6 +19,7 @@ namespace LenayGG_Movil
             var builder = MauiApp.CreateBuilder();
             builder
                 .UseMauiApp<App>()
+                .UseBottomSheet()
                 .ConfigureFonts(fonts =>
                 {
                     fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
@@ -69,6 +71,8 @@ namespace LenayGG_Movil
             //Transacciones
             builder.Services.AddTransient<TransaccionLayOut>();
             builder.Services.AddTransient<TransaccionesViewModel>();
+            builder.Services.AddTransient<CategoriaBottomViewModel>();
+            builder.Services.AddTransient<CategoriaBottomSheet>();
 
             return builder.Build();
         }

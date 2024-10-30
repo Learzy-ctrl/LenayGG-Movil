@@ -57,15 +57,35 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <None Remove="Resources\Images\baby.png" />
+	  <None Remove="Resources\Images\balance.png" />
+	  <None Remove="Resources\Images\bolt.png" />
+	  <None Remove="Resources\Images\briefcase.png" />
 	  <None Remove="Resources\Images\calendar.png" />
+	  <None Remove="Resources\Images\calendario.png" />
+	  <None Remove="Resources\Images\car.png" />
 	  <None Remove="Resources\Images\card.png" />
 	  <None Remove="Resources\Images\category.png" />
 	  <None Remove="Resources\Images\fondo.jpeg" />
+	  <None Remove="Resources\Images\gift.png" />
+	  <None Remove="Resources\Images\graduation.png" />
+	  <None Remove="Resources\Images\hand.png" />
+	  <None Remove="Resources\Images\hiking.png" />
 	  <None Remove="Resources\Images\home.png" />
+	  <None Remove="Resources\Images\homee.png" />
 	  <None Remove="Resources\Images\logotipo.jpg" />
+	  <None Remove="Resources\Images\paw.png" />
+	  <None Remove="Resources\Images\plane.png" />
 	  <None Remove="Resources\Images\read.png" />
 	  <None Remove="Resources\Images\ringing.png" />
+	  <None Remove="Resources\Images\shield.png" />
+	  <None Remove="Resources\Images\spa.png" />
+	  <None Remove="Resources\Images\stethoscope.png" />
 	  <None Remove="Resources\Images\support.png" />
+	  <None Remove="Resources\Images\tshirt.png" />
+	  <None Remove="Resources\Images\tv.png" />
+	  <None Remove="Resources\Images\users.png" />
+	  <None Remove="Resources\Images\utensils.png" />
 	  <None Remove="Resources\Images\wallet.png" />
 	</ItemGroup>
 

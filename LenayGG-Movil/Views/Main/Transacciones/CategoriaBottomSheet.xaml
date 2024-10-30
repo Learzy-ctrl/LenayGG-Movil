@@ -41,7 +41,7 @@
                                                                   CommandParameter="{Binding .}" />
                                         </Frame.GestureRecognizers>
 
-                                        <Image Source="briefcase"
+                                        <Image Source=""
                                                VerticalOptions="CenterAndExpand"
                                                HorizontalOptions="CenterAndExpand"
                                                HeightRequest="35"

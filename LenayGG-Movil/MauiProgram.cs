@@ -35,6 +35,11 @@ namespace LenayGG_Movil
                 client.BaseAddress = new Uri("https://lenaygg-backend.onrender.com/");
             });
 
+            builder.Services.AddHttpClient<ITransactionInfraestructure, TransactionService>(client =>
+            {
+                client.BaseAddress = new Uri("https://lenaygg-backend.onrender.com/");
+            });
+
             // Sign In
             builder.Services.AddTransient<SignInViewModel>();
             builder.Services.AddTransient<SignIn>();

@@ -26,9 +26,9 @@ namespace LenayGG_Movil.ViewModels.Main
             ChangeToGasto();
             _serviceProvider = serviceProvider;
 
-            MessagingCenter.Subscribe<CategoriaBottomViewModel, ColorItem>(this, "ColorItemSelected", (sender, colorItem) =>
+            MessagingCenter.Subscribe<CategoriaBottomViewModel, CategoriaDto>(this, "CategoriaItemSelected", (sender, categoriaItem) =>
             {
-                SelectedColorItem = colorItem;
+                SelectedCategoriaItem = categoriaItem;
             });
         }
 
@@ -37,12 +37,12 @@ namespace LenayGG_Movil.ViewModels.Main
             MessagingCenter.Unsubscribe<CategoriaBottomViewModel, ColorItem>(this, "ColorItemSelected");
         }
 
-        private ColorItem _selectedColorItem;
-        public ColorItem SelectedColorItem
+        private CategoriaDto _selectedCategoriaItem;
+        public CategoriaDto SelectedCategoriaItem
         {
-            get { return _selectedColorItem; }
+            get { return _selectedCategoriaItem; }
             set { 
-                SetValue(ref _selectedColorItem, value);
+                SetValue(ref _selectedCategoriaItem, value);
             }
         }
         #region Variables

@@ -8,6 +8,9 @@ namespace LenayGG_Movil.Models.TransactionModel
 {
     public class CategoriaDto
     {
-
+        public int Id { get; set; }
+        public string Color { get; set; }
+        public string Icono { get; set; }
+        public string Nombre { get; set; }
     }
 }

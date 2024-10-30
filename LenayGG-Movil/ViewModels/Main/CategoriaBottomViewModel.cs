@@ -1,54 +1,88 @@
-﻿using LenayGG_Movil.Models.TransactionModel;
+﻿using LenayGG_Movil.Infrastructure;
+using LenayGG_Movil.Models;
+using LenayGG_Movil.Models.TransactionModel;
 using LenayGG_Movil.Views.Main.Transacciones;
-using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Input;
 
 namespace LenayGG_Movil.ViewModels.Main
 {
     public class CategoriaBottomViewModel : BaseViewModel
     {
-        public ObservableCollection<ColorItem> Colores { get; set; }
         public CategoriaBottomSheet bottomSheet {  get; set; }
-        public ICommand SelectColorCommand => new Command<ColorItem>(colorItem =>
+        private readonly ITransactionInfraestructure _transactionInfraestructure;
+        private readonly ILogin _login;
+        public ICommand SelectCategoriaCommand => new Command<CategoriaDto>(categoriaItem =>
         {
-            MessagingCenter.Send(this, "ColorItemSelected", colorItem);
+            MessagingCenter.Send(this, "CategoriaItemSelected", categoriaItem);
             bottomSheet.DismissAsync();
         });
-        public CategoriaBottomViewModel()
+        public CategoriaBottomViewModel(ITransactionInfraestructure transactionInfraestructure, ILogin login)
         {
-            Colores = new ObservableCollection<ColorItem>
-            {
-                new ColorItem { Color = Colors.Red, Nombre = "Rojo" },
-                new ColorItem { Color = Colors.Blue, Nombre = "Azul" },
-                new ColorItem { Color = Colors.Green, Nombre = "Verde" },
-                new ColorItem { Color = Colors.Red, Nombre = "Rojo" },
-                new ColorItem { Color = Colors.Blue, Nombre = "Azul" },
-                new ColorItem { Color = Colors.Green, Nombre = "Verde" },
-                new ColorItem { Color = Colors.Red, Nombre = "Rojo" },
-                new ColorItem { Color = Colors.Blue, Nombre = "Azul" },
-                new ColorItem { Color = Colors.Green, Nombre = "Verde" },
-                new ColorItem { Color = Colors.Red, Nombre = "Rojo" },
-                new ColorItem { Color = Colors.Blue, Nombre = "Azul" },
-                new ColorItem { Color = Colors.Green, Nombre = "Verde" },
-                new ColorItem { Color = Colors.Red, Nombre = "Rojo" },
-                new ColorItem { Color = Colors.Blue, Nombre = "Azul" },
-                new ColorItem { Color = Colors.Green, Nombre = "Verde" },
-                new ColorItem { Color = Colors.Red, Nombre = "Rojo" },
-                new ColorItem { Color = Colors.Blue, Nombre = "Azul" },
-                new ColorItem { Color = Colors.Green, Nombre = "Verde" },
-                new ColorItem { Color = Colors.Red, Nombre = "Rojo" },
-                new ColorItem { Color = Colors.Blue, Nombre = "Azul" },
-                new ColorItem { Color = Colors.Green, Nombre = "Verde" },
-                new ColorItem { Color = Colors.Red, Nombre = "Rojo" },
-                new ColorItem { Color = Colors.Blue, Nombre = "Azul" },
-                new ColorItem { Color = Colors.Green, Nombre = "Verde" },
-                // Agrega más colores según sea necesario
-            };
+            _transactionInfraestructure = transactionInfraestructure;
+            _login = login;
+            SetCategorias();
         }
+
+        #region Variables
+        private List<CategoriaDto> _categorias;
+        #endregion
+
+        #region Objects
+        public List<CategoriaDto> Categorias
+        {
+            get { return _categorias; }
+            set { SetValue(ref _categorias, value); }
+        }
+        #endregion
+
+        #region Methods
+
+        private async Task SetCategorias()
+        {
+            Categorias = await GetCategorias();
+        }
+
+        private async Task<List<CategoriaDto>> GetCategorias()
+        {
+            bool sen = false;
+            List<CategoriaDto> list = null;
+            do
+            {
+                var token = SecureStorage.GetAsync("Token").Result;
+                var response = await _transactionInfraestructure.categoriaDtos(token);
+                var apiResponse = response as ApiResponseDto;
+                if (apiResponse != null)
+                {
+                    if (apiResponse.Resultado == "Connection failure")
+                    {
+                        var listCategoria = new List<CategoriaDto>();
+                        var categoria = new CategoriaDto
+                        {
+                            Nombre = "Connection failure"
+                        };
+                        listCategoria.Add(categoria);
+                        list = listCategoria;
+                        sen = false;
+                    }
+                    else
+                    {
+                        var email = SecureStorage.GetAsync("Email").Result;
+                        var password = SecureStorage.GetAsync("Password").Result;
+                        var result = await _login.SignIn(email, password);
+                        await SecureStorage.SetAsync("Token", result.Resultado);
+                        sen = true;
+                    }
+                }
+                else
+                {
+                    list = response as List<CategoriaDto>;
+                    sen = false;
+                }
+            } while (sen);
+            return list;
+        }
+        #endregion
+
+
     }
 }

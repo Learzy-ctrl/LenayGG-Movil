@@ -3,6 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="LenayGG_Movil.Views.Main.Inicio.InicioLayout"
              BackgroundColor="#F3F3F3"
+             xmlns:local="clr-namespace:LenayGG_Movil"
              Title="InicioLayout">
     <Grid>
         <Grid.RowDefinitions>
@@ -20,8 +21,8 @@
                     <RowDefinition Height="7*"/>
                     <RowDefinition Height="3*" />
                 </Grid.RowDefinitions>
-                <Frame BackgroundColor="Black"
-                       BorderColor="Black"
+                <Frame BackgroundColor="{Binding ColorWallet}"
+                       BorderColor="Transparent"
                        Margin="15,0,15,0"
                        CornerRadius="25"
                        Grid.Row="0">
@@ -31,7 +32,7 @@
                        Margin="20,0,20,0"
                        Padding="5"
                        CornerRadius="50">
-                            <Label Text="Santander"
+                            <Label Text="{Binding NombreWallet}"
                            TextColor="Black"
                            FontSize="Title"
                            FontAttributes="Bold"
@@ -50,7 +51,7 @@
                            VerticalOptions="End"
                            Padding="0,0,0,5"/>
                             <Label Grid.Column="1"
-                           Text="$50000"
+                           Text="{Binding Disponible}"
                            FontSize="25"
                            FontAttributes="Bold"/>
                         </Grid>
@@ -68,7 +69,7 @@
                                        FontAttributes="Bold"
                                        VerticalOptions="End"
                                        Padding="0,0,0,5"/>
-                                <Label Text="$10000.65"
+                                <Label Text="{Binding Gastado}"
                                FontSize="23"
                                FontAttributes="Bold"/>
                             </HorizontalStackLayout>
@@ -88,13 +89,21 @@
                             BackgroundColor="White"
                             Margin="10,15,10,15"
                             Command="{Binding UnifyWalletsCommand}"/>
-                    <Button Grid.Column="1"
-                            CornerRadius="50"
-                            Text="Siguiente billetera"
-                            FontAttributes="Bold"
-                            BackgroundColor="White"
-                            Margin="10,15,10,15"
-                            Command="{Binding NextWalletCommand}"/>
+                    <Frame Grid.Column="1"
+                           BorderColor="Transparent"
+                           BackgroundColor="White"
+                           CornerRadius="50"
+                           Margin="10,15,10,15">
+
+                        <local:PickerUnderLineColor Title="Selecciona Billetera" 
+                                                    TitleColor="Gray" 
+                                                    ItemsSource="{Binding WalletList}" 
+                                                    SelectedItem="{Binding Wallet}" 
+                                                    ItemDisplayBinding="{Binding Nombre}"
+                                                    TextColor="Black"
+                                                    FontAttributes="Bold"
+                                                    Margin="-10,-15,-16,-15"/>
+                    </Frame>
                 </Grid>
             </Grid>
         </Frame>

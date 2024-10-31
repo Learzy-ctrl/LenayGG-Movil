@@ -36,7 +36,7 @@
                    HorizontalOptions="End"
                    Margin="0,0,10,0"/>
             <StackLayout Margin="0,0,30,0" Grid.Column="1">
-                <local:BorderLessEntry Placeholder="Color" PlaceholderColor="Gray" IsReadOnly="True" Text="{Binding _Color}" TextColor="Black"/>
+                <local:BorderLessEntry Placeholder="Color" PlaceholderColor="Gray" IsReadOnly="False" Text="{Binding _Color}" TextColor="Black"/>
                 <BoxView HeightRequest="2" Color="Black"/>
             </StackLayout>
             <Grid.GestureRecognizers>

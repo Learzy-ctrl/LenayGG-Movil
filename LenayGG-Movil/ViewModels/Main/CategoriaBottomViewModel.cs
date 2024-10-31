@@ -1,4 +1,5 @@
-﻿using LenayGG_Movil.Infrastructure;
+﻿using Acr.UserDialogs;
+using LenayGG_Movil.Infrastructure;
 using LenayGG_Movil.Models;
 using LenayGG_Movil.Models.TransactionModel;
 using LenayGG_Movil.Views.Main.Transacciones;
@@ -79,6 +80,7 @@ namespace LenayGG_Movil.ViewModels.Main
                     sen = false;
                 }
             } while (sen);
+            UserDialogs.Instance.HideLoading();
             return list;
         }
         #endregion

@@ -1,6 +1,7 @@
 ﻿using Acr.UserDialogs;
 using CommunityToolkit.Mvvm.Input;
 using LenayGG_Movil.Models.TransactionModel;
+using LenayGG_Movil.Models.WalletModel;
 using LenayGG_Movil.Views.Main.Transacciones;
 using System;
 using System.Collections.Generic;
@@ -90,8 +91,6 @@ namespace LenayGG_Movil.ViewModels.Main
             UserDialogs.Instance.ShowLoading("Cargando");
             var bottomSheet = _serviceProvider.GetService<CategoriaBottomSheet>();
             await bottomSheet.ShowAsync();
-            UserDialogs.Instance.HideLoading();
-            
         }
         #endregion
 

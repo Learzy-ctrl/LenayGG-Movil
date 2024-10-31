@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="LenayGG_Movil.Views.Main.Inicio.InicioLayout"
+             BackgroundColor="#F3F3F3"
+             xmlns:local="clr-namespace:LenayGG_Movil"
+             Title="InicioLayout">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="3.5*"/>
+            <RowDefinition Height="5*"/>
+        </Grid.RowDefinitions>
+
+        <Frame Grid.Row="0"
+               CornerRadius="50"
+               Margin="0,-50,0,0"
+               BackgroundColor="#67AE08"
+               BorderColor="Transparent">
+            <Grid Padding="0,50,0,0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="7*"/>
+                    <RowDefinition Height="3*" />
+                </Grid.RowDefinitions>
+                <Frame BackgroundColor="{Binding ColorWallet}"
+                       BorderColor="Transparent"
+                       Margin="15,0,15,0"
+                       CornerRadius="25"
+                       Grid.Row="0">
+                    <VerticalStackLayout>
+                        <Frame BackgroundColor="white"
+                       BorderColor="White"
+                       Margin="20,0,20,0"
+                       Padding="5"
+                       CornerRadius="50">
+                            <Label Text="{Binding NombreWallet}"
+                           TextColor="Black"
+                           FontSize="Title"
+                           FontAttributes="Bold"
+                           HorizontalTextAlignment="Center"/>
+                        </Frame>
+
+                        <Grid Padding="0,15,0,0">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="2*"/>
+                                <ColumnDefinition Width="5*"/>
+                                <ColumnDefinition Width="3*"/>
+                            </Grid.ColumnDefinitions>
+                            <Label Grid.Column="0"
+                           Text="Total: "
+                           HorizontalOptions="End"
+                           VerticalOptions="End"
+                           Padding="0,0,0,5"/>
+                            <Label Grid.Column="1"
+                           Text="{Binding Disponible}"
+                           FontSize="25"
+                           FontAttributes="Bold"/>
+                        </Grid>
+
+                        <Grid Padding="0,15,0,10">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="3*"/>
+                                <ColumnDefinition Width="5*"/>
+                                <ColumnDefinition Width="5*"/>
+                            </Grid.ColumnDefinitions>
+                            <HorizontalStackLayout Grid.Column="1"
+                                           HorizontalOptions="EndAndExpand">
+                                <Label Text="Gastado Hoy: "
+                                       FontSize="12"
+                                       FontAttributes="Bold"
+                                       VerticalOptions="End"
+                                       Padding="0,0,0,5"/>
+                                <Label Text="{Binding Gastado}"
+                               FontSize="23"
+                               FontAttributes="Bold"/>
+                            </HorizontalStackLayout>
+                        </Grid>
+                    </VerticalStackLayout>
+                </Frame>
+                <Grid Grid.Row="1">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="5*"/>
+                        <ColumnDefinition Width="5*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <Button Grid.Column="0"
+                            CornerRadius="50"
+                            Text="Unificar billeteras"
+                            FontAttributes="Bold"
+                            BackgroundColor="White"
+                            Margin="10,15,10,15"
+                            Command="{Binding UnifyWalletsCommand}"/>
+                    <Frame Grid.Column="1"
+                           BorderColor="Transparent"
+                           BackgroundColor="White"
+                           CornerRadius="50"
+                           Margin="10,15,10,15">
+
+                        <local:PickerUnderLineColor Title="Selecciona Billetera" 
+                                                    TitleColor="Gray" 
+                                                    ItemsSource="{Binding WalletList}" 
+                                                    SelectedItem="{Binding Wallet}" 
+                                                    ItemDisplayBinding="{Binding Nombre}"
+                                                    TextColor="Black"
+                                                    FontAttributes="Bold"
+                                                    Margin="-10,-15,-16,-15"/>
+                    </Frame>
+                </Grid>
+            </Grid>
+        </Frame>
+
+        <ContentView Grid.Row="1" Content="{Binding Content}"/>
+        <Button Grid.Row="1"
+                VerticalOptions="EndAndExpand"
+                HorizontalOptions="EndAndExpand"
+                Margin="20"
+                CornerRadius="50"
+                TextColor="White"
+                Text="+"
+                FontSize="25"
+                Padding="20,10,20,10"
+                BackgroundColor="#67AE08"
+                Command="{Binding GoToTransaccionCommand}"/>
+        
+    </Grid>
+</ContentPage>

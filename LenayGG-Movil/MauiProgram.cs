@@ -1,10 +1,14 @@
 ﻿using LenayGG_Movil.Infrastructure;
 using LenayGG_Movil.Services;
 using LenayGG_Movil.ViewModels.Login;
+using LenayGG_Movil.ViewModels.Main;
 using LenayGG_Movil.ViewModels.Wallet;
 using LenayGG_Movil.Views;
 using LenayGG_Movil.Views.Login;
+using LenayGG_Movil.Views.Main.Inicio;
+using LenayGG_Movil.Views.Main.Transacciones;
 using LenayGG_Movil.Views.Wallet;
+using The49.Maui.BottomSheet;
 
 namespace LenayGG_Movil
 {
@@ -15,6 +19,7 @@ namespace LenayGG_Movil
             var builder = MauiApp.CreateBuilder();
             builder
                 .UseMauiApp<App>()
+                .UseBottomSheet()
                 .ConfigureFonts(fonts =>
                 {
                     fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
@@ -26,6 +31,11 @@ namespace LenayGG_Movil
             });
 
             builder.Services.AddHttpClient<IWalletInfraestructure, WalletService>(client =>
+            {
+                client.BaseAddress = new Uri("https://lenaygg-backend.onrender.com/");
+            });
+
+            builder.Services.AddHttpClient<ITransactionInfraestructure, TransactionService>(client =>
             {
                 client.BaseAddress = new Uri("https://lenaygg-backend.onrender.com/");
             });
@@ -58,6 +68,17 @@ namespace LenayGG_Movil
             builder.Services.AddTransient<EditarBilletera>();
             builder.Services.AddTransient<EditarBilleteraCredito>();
             builder.Services.AddTransient<EditarBilleteraViewModel>();
+
+            //Inicio
+            builder.Services.AddTransient<InicioLayout>();
+            builder.Services.AddTransient<InicioViewModel>();
+
+            //Transacciones
+            builder.Services.AddTransient<TransaccionLayOut>();
+            builder.Services.AddTransient<TransaccionesViewModel>();
+            builder.Services.AddTransient<CategoriaBottomViewModel>();
+            builder.Services.AddTransient<CategoriaBottomSheet>();
+
             return builder.Build();
         }
     }

@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="LenayGG_Movil.Views.Main.Inicio.ExistHistory">
+    <RefreshView Margin="0,10,0,0" IsRefreshing="{Binding IsRefreshing}" Command="{Binding RefreshTransactionsCommand}">
+        <CollectionView ItemsSource="{Binding TransaccionList}">
+            <CollectionView.ItemsLayout>
+                <GridItemsLayout Orientation="Vertical"/>
+            </CollectionView.ItemsLayout>
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <StackLayout >
+                        <Frame BackgroundColor="White"
+               CornerRadius="0"
+               BorderColor="Transparent"
+               HasShadow="True">
+                            <Frame.Shadow>
+                                <Shadow Brush="Black"
+                        Offset="1,5"
+                        Radius="10"
+                        Opacity="0.2"/>
+                            </Frame.Shadow>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="2*"/>
+                                    <ColumnDefinition Width="7*"/>
+                                    <ColumnDefinition Width="3*"/>
+                                </Grid.ColumnDefinitions>
+                                <Frame Grid.Column="0"
+                                       CornerRadius="50"
+                                       BackgroundColor="{Binding CategoriaColor}"
+                                       BorderColor="Transparent"
+                                       HeightRequest="50"
+                                       WidthRequest="50">
+                                    <Image Source="{Binding CategoriaIcono}"
+                                           VerticalOptions="CenterAndExpand"
+                                           HorizontalOptions="CenterAndExpand"
+                                           WidthRequest="25"
+                                           HeightRequest="25"/>
+                                </Frame>
+                                <VerticalStackLayout Grid.Column="1"
+                                     Margin="10,0,0,0"
+                                     VerticalOptions="CenterAndExpand">
+                                    <Label Text="{Binding Descripcion}"
+                                           TextColor="Black"
+                                           FontAttributes="Bold"
+                                           FontSize="Medium"/>
+                                    <Label Text="{Binding CategoriaNombre}"
+                                           TextColor="#6A6565"/>
+                                </VerticalStackLayout>
+
+                                <HorizontalStackLayout Grid.Column="2"
+                                       VerticalOptions="CenterAndExpand">
+                                    <Label Text="{Binding TipoTransaccion}"
+                           TextColor="Black"
+                           FontAttributes="Bold"
+                           FontSize="Medium"/>
+                                    <Label Text="$"
+                           TextColor="Black"
+                           FontAttributes="Bold"
+                           FontSize="Medium"/>
+                                    <Label Text="{Binding Dinero}"
+                           TextColor="Black"
+                           FontAttributes="Bold"
+                           FontSize="Medium"/>
+                                </HorizontalStackLayout>
+                            </Grid>
+                        </Frame>
+                    </StackLayout>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+        
+    </RefreshView>
+</ContentView>

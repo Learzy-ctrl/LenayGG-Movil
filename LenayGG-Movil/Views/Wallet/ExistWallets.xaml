@@ -12,8 +12,8 @@
             </CollectionView.ItemsLayout>
             <CollectionView.ItemTemplate>
                 <DataTemplate>
-                    <Frame BackgroundColor="#C7696B"
-                           BorderColor="#C7696B"
+                    <Frame BackgroundColor="{Binding Color}"
+                           BorderColor="Transparent"
                            Margin="30,0,30,0"
                            CornerRadius="25"
                            Grid.Row="1">

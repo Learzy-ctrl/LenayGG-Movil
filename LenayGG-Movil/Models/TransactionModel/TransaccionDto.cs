@@ -15,6 +15,9 @@ namespace LenayGG_Movil.Models.TransactionModel
         public string CategoriaColor { get; set; }
         public string CategoriaNombre { get; set; }
         public decimal Dinero { get; set; }
+        public decimal BilleteraSaldo { get; set; }
+        public string BilleteraNombre { get; set; }
+        public string BilleteraColor { get; set; }
         public string TipoTransaccion { get; set; }
     }
 }

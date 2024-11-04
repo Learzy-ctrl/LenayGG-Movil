@@ -7,13 +7,6 @@ using LenayGG_Movil.Models.WalletModel;
 using LenayGG_Movil.Views;
 using LenayGG_Movil.Views.Main.Inicio;
 using LenayGG_Movil.Views.Main.Transacciones;
-using LenayGG_Movil.Views.Wallet;
-using Microsoft.Extensions.DependencyInjection;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Input;
 
 namespace LenayGG_Movil.ViewModels.Main
@@ -28,15 +21,15 @@ namespace LenayGG_Movil.ViewModels.Main
         public InicioViewModel(IServiceProvider serviceProvider, ILogin login, ITransactionInfraestructure transactionInfraestructure,
             IWalletInfraestructure walletInfraestructure)
         {
-            UnifyWalletsCommand = new RelayCommand(UnifyWallets);
-            NextWalletCommand = new RelayCommand(NextWallet);
+            UnifyWalletsCommand = new AsyncRelayCommand(UnifyWallets);
+            NextWalletCommand = new AsyncRelayCommand(NextWallet);
             GoToTransaccionCommand = new AsyncRelayCommand(GoToTransaccion);
             RefreshTransactionsCommand = new AsyncRelayCommand(RefreshTransactions);
             _serviceProvider = serviceProvider;
             _login = login;
             _transactionInfraestructure = transactionInfraestructure;
             _walletInfraestructure = walletInfraestructure;
-            UnifyWallets();
+            _ = InitializeAsync();
         }
 
 
@@ -67,7 +60,7 @@ namespace LenayGG_Movil.ViewModels.Main
         {
             get { return _wallet; }
             set { SetValue(ref _wallet, value);
-                   NextWallet();
+                NextWallet();
             }
         }
 
@@ -109,36 +102,26 @@ namespace LenayGG_Movil.ViewModels.Main
         #endregion
 
         #region Methods
-
-        private async void UnifyWallets()
+        private async Task InitializeAsync()
         {
-            var list = await GetWallets();
-            var first = list.FirstOrDefault();
-            if (list.Count == 0)
-            {
-                Content = new NoWallets();
-            }
-            else if (first.Nombre == "Connection failure")
-            {
-                Content = new NoConnection();
-            }
-            else
-            {
-                UserDialogs.Instance.ShowLoading("Cargando");
-                WalletList = list;
-                await GetAllTransactions();
-                UserDialogs.Instance.HideLoading();
-            }
-            
+            await Task.Delay(5000);
+            await UnifyWallets();
         }
-
-        private async void NextWallet()
+        private async Task UnifyWallets()
         {
+            bool isByUser = true;
             UserDialogs.Instance.ShowLoading("Cargando");
-            await GetTransactionByWallet();
+            await GetWallets();
+            await GetAllTransactions(isByUser);
             UserDialogs.Instance.HideLoading();
         }
-
+        private async Task NextWallet()
+        {
+            bool isByUser = false;
+            UserDialogs.Instance.ShowLoading("Cargando");
+            await GetAllTransactions(isByUser);
+            UserDialogs.Instance.HideLoading();
+        }
         private async Task GoToTransaccion()
         {
             var transaccionLayOut = _serviceProvider.GetService<TransaccionLayOut>();
@@ -146,123 +129,56 @@ namespace LenayGG_Movil.ViewModels.Main
             await _navigation.PushModalAsync(transaccionLayOut);
             UserDialogs.Instance.HideLoading();
         }
-
-        private async Task GetAllTransactions()
+        private async Task RefreshTransactions()
         {
-            bool sen;
-            do
+            IsRefreshing = true;
+            if(NombreWallet == "General")
             {
-                var token = SecureStorage.GetAsync("Token").Result;
-                var response = await _transactionInfraestructure.GetTransaccionesByIdUsuario(token);
-                var apiResponse = response as ApiResponseDto;
-                if (apiResponse != null)
-                {
-                    if (apiResponse.Resultado == "Connection failure")
-                    {
-                        Content = new NoConnection();
-                        sen = false;
-                    }
-                    else
-                    {
-                        var email = SecureStorage.GetAsync("Email").Result;
-                        var password = SecureStorage.GetAsync("Password").Result;
-                        var result = await _login.SignIn(email, password);
-                        await SecureStorage.SetAsync("Token", result.Resultado);
-                        sen = true;
-                    }
-                }
-                else
-                {
-                    var list = response as List<TransaccionDto>;
-                    TransaccionList = list;
-                    SetWalletUnify();
-                    sen = false;
-                }
-            } while (sen);
-            if (TransaccionList.Count == 0)
-            {
-                Content = new NoHistory();
+                await GetWallets();
+                await GetAllTransactions(true);
             }
             else
             {
-                Content = new ExistHistory();
+                await GetAllTransactions(false);
             }
+            IsRefreshing = false;
         }
-
-        private async Task GetTransactionByWallet()
-        {
-            var idWallet = new IdWalletDto
-            {
-                id = Wallet.Id
-            };
-            bool sen;
-            do
-            {
-                var token = SecureStorage.GetAsync("Token").Result;
-                var response = await _transactionInfraestructure.GetTransaccionesByIdWallet(idWallet, token);
-                var apiResponse = response as ApiResponseDto;
-                if (apiResponse != null)
-                {
-                    if (apiResponse.Resultado == "Connection failure")
-                    {
-                        Content = new NoConnection();
-                        sen = false;
-                    }
-                    else
-                    {
-                        var email = SecureStorage.GetAsync("Email").Result;
-                        var password = SecureStorage.GetAsync("Password").Result;
-                        var result = await _login.SignIn(email, password);
-                        await SecureStorage.SetAsync("Token", result.Resultado);
-                        sen = true;
-                    }
-                }
-                else
-                {
-                    var list = response as List<TransaccionDto>;
-                    TransaccionList = list;
-                    SetWallet();
-                    Content = new ExistHistory();
-                    sen = false;
-                }
-            } while (sen);
-            if(TransaccionList.Count == 0)
-            {
-                Content = new NoHistory();
-            }
-            else
-            {
-                Content = new ExistHistory();
-            }
-        }
-
-        private void SetWallet()
-        {
-            NombreWallet = Wallet.Nombre;
-            if(Wallet.IdTipoCuenta == 1)
-            {
-                Disponible = Wallet.LimiteCredito + Wallet.Saldo;
-            }
-            else
-            {
-                Disponible = Wallet.Saldo;
-            }
-            Gastado = TransaccionList.Where(t => t.TipoTransaccion == "-").Sum(t => t.Dinero);
-            ColorWallet = Wallet.Color;
-        }
-
-        private void SetWalletUnify()
-        {
-            NombreWallet = "General";
-            Disponible = WalletList.Where(w => w.IdTipoCuenta  != 1).Sum(t => t.Saldo);
-            Gastado = TransaccionList.Where(t => t.TipoTransaccion == "-").Sum(t => t.Dinero);
-            ColorWallet = "black";
-        }
-
-        private async Task<List<WalletDto>> GetWallets()
+        private async Task GetAllTransactions(bool isByUser)
         {
             bool sen = false;
-            List<WalletDto> list = null;
+            do
+            {
+                var token = SecureStorage.GetAsync("Token").Result;
+                var response = await ChooseMethodTransactions(token, isByUser);
+                var apiResponse = response as ApiResponseDto;
+                if (apiResponse != null)
+                {
+                    if (apiResponse.Resultado == "Connection failure")
+                    {
+                        Content = new NoConnection();
+                        sen = false;
+                    }
+                    else
+                    {
+                        var email = SecureStorage.GetAsync("Email").Result;
+                        var password = SecureStorage.GetAsync("Password").Result;
+                        var result = await _login.SignIn(email, password);
+                        await SecureStorage.SetAsync("Token", result.Resultado);
+                        sen = true;
+                    }
+                }
+                else
+                {
+                    TransaccionList = response as List<TransaccionDto>;
+                    var view = TransaccionList.Count != 0 ? Content = new ExistHistory() : Content = new NoHistory();
+                    SetWallet(isByUser);
+                    sen = false;
+                }
+            } while (sen);
+        }
+        private async Task GetWallets()
+        {
+            bool sen = false;
             do
             {
                 var token = SecureStorage.GetAsync("Token").Result;
@@ -272,13 +188,7 @@ namespace LenayGG_Movil.ViewModels.Main
                 {
                     if (apiResponse.Resultado == "Connection failure")
                     {
-                        var listWallet = new List<WalletDto>();
-                        var wallet = new WalletDto
-                        {
-                            Nombre = "Connection failure"
-                        };
-                        listWallet.Add(wallet);
-                        list = listWallet;
+                        Content = new NoConnection();
                         sen = false;
                     }
                     else
@@ -292,25 +202,41 @@ namespace LenayGG_Movil.ViewModels.Main
                 }
                 else
                 {
-                    list = response as List<WalletDto>;
+                    WalletList = response as List<WalletDto>;
                     sen = false;
                 }
             } while (sen);
-            return list;
         }
-
-        private async Task RefreshTransactions()
+        private async Task<object> ChooseMethodTransactions(string token, bool isByUser)
         {
-            IsRefreshing = true;
-            if(NombreWallet == "General")
+            if (isByUser)
             {
-                await GetAllTransactions();
+                return await _transactionInfraestructure.GetTransaccionesByIdUsuario(token);
+            }
+
+            var idWallet = new IdWalletDto
+            {
+                id = Wallet.Id
+            };
+            return await _transactionInfraestructure.GetTransaccionesByIdWallet(idWallet, token);
+        }
+        private void SetWallet(bool isByUser)
+        {
+            if (isByUser)
+            {
+                NombreWallet = "General";
+                Disponible = WalletList.Where(w => w.IdTipoCuenta != 1).Sum(w => w.Saldo);
+                Gastado = TransaccionList.Where(t => t.TipoTransaccion == "-").Sum(t => t.Dinero);
+                ColorWallet = "Black";
             }
             else
             {
-                await GetTransactionByWallet();
+                var transaction = TransaccionList.FirstOrDefault();
+                NombreWallet = transaction.BilleteraNombre;
+                Disponible = transaction.BilleteraSaldo;
+                Gastado = TransaccionList.Where(t => t.TipoTransaccion == "-").Sum(t => t.Dinero);
+                ColorWallet = transaction.BilleteraColor;
             }
-            IsRefreshing = false;
         }
 
         #endregion

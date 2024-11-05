@@ -21,7 +21,7 @@
                Margin="0,0,10,0"/>
 
             <StackLayout Margin="0,0,15,0" Grid.Column="1">
-                <local:PickerUnderLineColor Title="Selecciona Billetera" TitleColor="Gray" ItemsSource="{Binding Opciones}" SelectedItem="{Binding _OpcionSeleccionada}" TextColor="Black"/>
+                <local:PickerUnderLineColor Title="Selecciona Billetera" TitleColor="Gray" ItemsSource="{Binding WalletList}" SelectedItem="{Binding Wallet}" ItemDisplayBinding="{Binding Nombre}" TextColor="Black"/>
                 <BoxView HeightRequest="2" Color="Black"/>
             </StackLayout>
 
@@ -30,7 +30,7 @@
                    Text="a"
                    VerticalOptions="CenterAndExpand"/>
             <StackLayout Margin="0,0,30,0" Grid.Column="3">
-                <local:PickerUnderLineColor Title="Selecciona Billetera" TitleColor="Gray" ItemsSource="{Binding Opciones}" SelectedItem="{Binding _OpcionSeleccionada}" TextColor="Black"/>
+                <local:PickerUnderLineColor Title="Selecciona Billetera" TitleColor="Gray" ItemsSource="{Binding WalletList}" SelectedItem="{Binding Wallet2}" ItemDisplayBinding="{Binding Nombre}" TextColor="Black"/>
                 <BoxView HeightRequest="2" Color="Black"/>
             </StackLayout>
         </Grid>
@@ -49,7 +49,7 @@
             <StackLayout Margin="0,0,30,0" Grid.Column="1">
                 <Label Text="Descripcion"
                    TextColor="Black"/>
-                <local:BorderLessEntry Placeholder="Descripcion" Text="" Keyboard="Text" PlaceholderColor="Gray" TextColor="Black"/>
+                <local:BorderLessEntry Placeholder="Descripcion" Text="{Binding Descripcion}" Keyboard="Text" PlaceholderColor="Gray" TextColor="Black"/>
                 <BoxView HeightRequest="2" Color="Black"/>
             </StackLayout>
         </Grid>
@@ -69,7 +69,7 @@
             <StackLayout Margin="0,0,30,0" Grid.Column="1">
                 <Label Text="Fecha"
            TextColor="Black"/>
-                <local:DatePickerUnderlineColor  TextColor="Black"/>
+                <local:DatePickerUnderlineColor  Date="{Binding Fecha}" TextColor="Black"/>
                 <BoxView HeightRequest="2" Color="Black"/>
             </StackLayout>
         </Grid>

@@ -231,11 +231,22 @@ namespace LenayGG_Movil.ViewModels.Main
             }
             else
             {
-                var transaction = TransaccionList.FirstOrDefault();
-                NombreWallet = transaction.BilleteraNombre;
-                Disponible = transaction.BilleteraSaldo;
-                Gastado = TransaccionList.Where(t => t.TipoTransaccion == "-").Sum(t => t.Dinero);
-                ColorWallet = transaction.BilleteraColor;
+                if(TransaccionList.Count != 0)
+                {
+                    var transaction = TransaccionList.FirstOrDefault();
+                    NombreWallet = transaction.BilleteraNombre;
+                    Disponible = transaction.BilleteraSaldo;
+                    Gastado = TransaccionList.Where(t => t.TipoTransaccion == "-").Sum(t => t.Dinero);
+                    ColorWallet = transaction.BilleteraColor;
+                }
+                else
+                {
+                    NombreWallet = Wallet.Nombre;
+                    Disponible = Wallet.Saldo;
+                    Gastado = 0;
+                    ColorWallet = Wallet.Color;
+                }
+                
             }
         }
 

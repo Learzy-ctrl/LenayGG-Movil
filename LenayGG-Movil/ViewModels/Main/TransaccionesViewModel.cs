@@ -51,7 +51,7 @@ namespace LenayGG_Movil.ViewModels.Main
         private TransferAggregate _transferAgg;
         private decimal _dinero;
         private string _descripcion;
-        private DateTime _fecha = DateTime.Now;
+        private DateTime _fecha = DateTime.Parse(DateTime.Now.ToString());
         private CategoriaDto _selectedCategoriaItem;
         private List<WalletDto> _walletList;
         private WalletDto _wallet;

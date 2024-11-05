@@ -2,11 +2,14 @@
 using LenayGG_Movil.Services;
 using LenayGG_Movil.ViewModels.Login;
 using LenayGG_Movil.ViewModels.Main;
+using LenayGG_Movil.ViewModels.Tools;
 using LenayGG_Movil.ViewModels.Wallet;
 using LenayGG_Movil.Views;
 using LenayGG_Movil.Views.Login;
 using LenayGG_Movil.Views.Main.Inicio;
 using LenayGG_Movil.Views.Main.Transacciones;
+using LenayGG_Movil.Views.Tools;
+using LenayGG_Movil.Views.Tools.Account;
 using LenayGG_Movil.Views.Wallet;
 using The49.Maui.BottomSheet;
 
@@ -79,6 +82,12 @@ namespace LenayGG_Movil
             builder.Services.AddTransient<CategoriaBottomViewModel>();
             builder.Services.AddTransient<CategoriaBottomSheet>();
 
+            //tools
+            builder.Services.AddTransient<Tools>();
+            builder.Services.AddTransient<ToolsViewModel>();
+
+            //Account
+            builder.Services.AddTransient<UserPage>();
             return builder.Build();
         }
     }

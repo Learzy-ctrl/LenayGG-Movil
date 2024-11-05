@@ -1,10 +1,6 @@
-﻿using LenayGG_Movil.Infrastructure;
-using LenayGG_Movil.Views;
+﻿using LenayGG_Movil.Views;
 using LenayGG_Movil.Views.Login;
-using LenayGG_Movil.Views.Main.Inicio;
-using Microsoft.Maui.Controls.PlatformConfiguration;
-using Microsoft.Maui.Handlers;
-using LenayGG_Movil.Views.Main.Transacciones;
+using LenayGG_Movil.Views.Tools.Account;
 
 #if ANDROID
 using AndroidX.AppCompat.Widget;
@@ -28,7 +24,6 @@ namespace LenayGG_Movil
             {
                 MainPage = new NavigationPage(signIn);
             }
-
 
 #if ANDROID
 

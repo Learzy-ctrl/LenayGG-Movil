@@ -1,4 +1,5 @@
 using LenayGG_Movil.Views.Main.Inicio;
+using LenayGG_Movil.Views.Tools;
 using LenayGG_Movil.Views.Wallet;
 using Microsoft.Maui.Controls.PlatformConfiguration.AndroidSpecific;
 
@@ -6,7 +7,7 @@ namespace LenayGG_Movil.Views;
 
 public partial class TabbedPageContainer : Microsoft.Maui.Controls.TabbedPage
 {
-	public TabbedPageContainer(Wallets wallets, InicioLayout inicioLayout)
+	public TabbedPageContainer(Wallets wallets, InicioLayout inicioLayout, Tools.Tools tools)
 	{
 		InitializeComponent();
 		On<Microsoft.Maui.Controls.PlatformConfiguration.Android>().SetToolbarPlacement(ToolbarPlacement.Bottom);
@@ -27,7 +28,7 @@ public partial class TabbedPageContainer : Microsoft.Maui.Controls.TabbedPage
         notificationPage.IconImageSource = "ringing";
         this.Children.Add(notificationPage);
 
-        var toolPage = new Tools.Tools();
+        var toolPage = tools;
         toolPage.Title = "Mas";
         toolPage.IconImageSource = "support";
         this.Children.Add(toolPage);

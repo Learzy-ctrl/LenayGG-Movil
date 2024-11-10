@@ -65,6 +65,13 @@ namespace LenayGG_Movil.Services
                 _httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
                 var response = await _httpClient.PostAsync("api/User/GetUser", content);
                 var responseData = await response.Content.ReadAsStringAsync();
+                if (responseData == "{\"numError\":1,\"resultado\":\"Token Expirado o no valido\"}")
+                {
+                    return new UserDto
+                    {
+                        NombreUser = "Token expirado"
+                    };
+                }
                 var result = JsonConvert.DeserializeObject<UserDto>(responseData);
                 return result;
             }
@@ -72,7 +79,7 @@ namespace LenayGG_Movil.Services
             {
                 return new UserDto
                 {
-                    NombreUser = $"Error {ex.Message}"
+                    NombreUser = "Error de conexion"
                 };
             }
         }

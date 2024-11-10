@@ -73,6 +73,7 @@
 	  <None Remove="Resources\Images\gift.png" />
 	  <None Remove="Resources\Images\graduation.png" />
 	  <None Remove="Resources\Images\hand.png" />
+	  <None Remove="Resources\Images\hide.png" />
 	  <None Remove="Resources\Images\hiking.png" />
 	  <None Remove="Resources\Images\home.png" />
 	  <None Remove="Resources\Images\homee.png" />
@@ -97,6 +98,7 @@
 	  <None Remove="Resources\Images\user.png" />
 	  <None Remove="Resources\Images\users.png" />
 	  <None Remove="Resources\Images\utensils.png" />
+	  <None Remove="Resources\Images\view.png" />
 	  <None Remove="Resources\Images\wallet.png" />
 	</ItemGroup>
 
@@ -112,6 +114,9 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <MauiXaml Update="Views\Login\ResetPassword.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	  <MauiXaml Update="Views\Login\SignIn.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>

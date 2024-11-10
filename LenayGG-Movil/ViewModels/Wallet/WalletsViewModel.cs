@@ -64,23 +64,27 @@ namespace LenayGG_Movil.ViewModels.Wallet
 
         private async Task RefreshView()
         {
-            isRefreshing = true;
-            var list = await GetWallets();
-            var first = list.FirstOrDefault();
-            if( list.Count == 0)
+            var token = SecureStorage.GetAsync("Token").Result;
+            if (!string.IsNullOrEmpty(token))
             {
-                ContentView = new NoWallets();
+                isRefreshing = true;
+                var list = await GetWallets();
+                var first = list.FirstOrDefault();
+                if (list.Count == 0)
+                {
+                    ContentView = new NoWallets();
+                }
+                else if (first.Nombre == "Connection failure")
+                {
+                    ContentView = new NoConnection();
+                }
+                else
+                {
+                    WalletList = list;
+                    ContentView = new ExistWallets();
+                }
+                isRefreshing = false;
             }
-            else if (first.Nombre == "Connection failure")
-            {
-                ContentView = new NoConnection();
-            }
-            else
-            {
-                WalletList = list;
-                ContentView = new ExistWallets();
-            }
-            isRefreshing = false;
         }
 
         private async Task<List<WalletDto>> GetWallets()
@@ -92,7 +96,7 @@ namespace LenayGG_Movil.ViewModels.Wallet
                 var token = SecureStorage.GetAsync("Token").Result;
                 var response = await _wallet.GetWallets(token);
                 var apiResponse = response as ApiResponseDto;
-                if(apiResponse != null)
+                if (apiResponse != null)
                 {
                     if (apiResponse.Resultado == "Connection failure")
                     {

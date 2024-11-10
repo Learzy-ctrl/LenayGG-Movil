@@ -3,6 +3,7 @@ using LenayGG_Movil.Services;
 using LenayGG_Movil.ViewModels.Login;
 using LenayGG_Movil.ViewModels.Main;
 using LenayGG_Movil.ViewModels.Tools;
+using LenayGG_Movil.ViewModels.Tools.Account;
 using LenayGG_Movil.ViewModels.Wallet;
 using LenayGG_Movil.Views;
 using LenayGG_Movil.Views.Login;
@@ -51,6 +52,9 @@ namespace LenayGG_Movil
             builder.Services.AddTransient<SignUpViewModel>();
             builder.Services.AddTransient<SignUp>();
 
+            builder.Services.AddTransient<ResetPassword>();
+            builder.Services.AddTransient<ResetPasswordViewModel>();
+
             // Wallets
             builder.Services.AddTransient<WalletsViewModel>();
             builder.Services.AddTransient<Wallets>();
@@ -88,6 +92,7 @@ namespace LenayGG_Movil
 
             //Account
             builder.Services.AddTransient<UserPage>();
+            builder.Services.AddTransient<UserViewModel>();
             return builder.Build();
         }
     }

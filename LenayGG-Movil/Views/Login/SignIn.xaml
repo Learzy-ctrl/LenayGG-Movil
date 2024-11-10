@@ -37,8 +37,20 @@
                 </Frame>
 
                 <!-- Contraseña -->
-                <Frame CornerRadius="25" Padding="10" HasShadow="True" BackgroundColor="White">
-                    <Entry Placeholder="Contraseña" IsPassword="True" TextColor="Black" Text="{Binding Password}"/>
+                
+                <Frame CornerRadius="25" Padding="10" HasShadow="True" BackgroundColor="White" Grid.Column="0">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="10*"/>
+                            <ColumnDefinition Width="2*"/>
+                        </Grid.ColumnDefinitions>
+                        <Entry Placeholder="Contraseña" IsPassword="{Binding IsPassword}" TextColor="Black" Text="{Binding Password}"/>
+                        <Image Grid.Column="1" Source="{Binding ImageIcon}" WidthRequest="25">
+                            <Image.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding ViewPasswordCommand}"/>
+                            </Image.GestureRecognizers>
+                        </Image>
+                    </Grid>
                 </Frame>
 
                 <!-- Botón de Login -->
@@ -50,6 +62,14 @@
                     <Label Text=" Únete" TextColor="#8BC34A" FontAttributes="Bold" >
                         <Label.GestureRecognizers>
                             <TapGestureRecognizer Command="{Binding GoToSignUpCommand}"/>
+                        </Label.GestureRecognizers>
+                    </Label>
+                </StackLayout>
+
+                <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
+                    <Label Text="¿Olvidaste tu contraseña?" TextColor="#8BC34A" FontAttributes="Bold" >
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding GoToResetPasswordCommand}"/>
                         </Label.GestureRecognizers>
                     </Label>
                 </StackLayout>

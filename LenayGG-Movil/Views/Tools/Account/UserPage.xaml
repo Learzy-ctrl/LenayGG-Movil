@@ -144,6 +144,9 @@
                         
                     </Grid>
                     <BoxView HeightRequest="2" Color="#E76B6B"/>
+                    <StackLayout.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding LogOutCommand}"/>
+                    </StackLayout.GestureRecognizers>
                 </StackLayout>
             </Grid>
         </VerticalStackLayout>

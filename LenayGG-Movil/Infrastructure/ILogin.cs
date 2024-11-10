@@ -1,4 +1,5 @@
 ﻿using LenayGG_Movil.Models;
+using LenayGG_Movil.Models.LoginModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,5 +13,7 @@ namespace LenayGG_Movil.Infrastructure
         Task<ApiResponseDto> SignUp(string username, DateTime birthDate, string email, string password);
 
         Task<ApiResponseDto> SignIn(string _email, string _password);
+
+        Task<ApiResponseDto> ResetPasswordByEmail(ResetPasswprdAggregate aggregate);
     }
 }

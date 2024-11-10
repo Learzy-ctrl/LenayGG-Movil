@@ -44,5 +44,14 @@ namespace LenayGG_Movil.Services
             var result = JsonConvert.DeserializeObject<ApiResponseDto>(responseData);
             return result;
         }
+
+        public async Task<ApiResponseDto> ResetPasswordByEmail(ResetPasswprdAggregate aggregate)
+        {
+            var content = new StringContent(JsonConvert.SerializeObject(aggregate), Encoding.UTF8, "application/json");
+            var response = await _httpClient.PostAsync("api/Login/ResetPassword", content);
+            var responseData = await response.Content.ReadAsStringAsync();
+            var result = JsonConvert.DeserializeObject<ApiResponseDto>(responseData);
+            return result;
+        }
     }
 }

@@ -104,8 +104,12 @@ namespace LenayGG_Movil.ViewModels.Main
         #region Methods
         private async Task InitializeAsync()
         {
-            await Task.Delay(5000);
-            await UnifyWallets();
+            var token = SecureStorage.GetAsync("Token").Result;
+            if (!string.IsNullOrEmpty(token))
+            {
+                await Task.Delay(3000);
+                await UnifyWallets();
+            }
         }
         private async Task UnifyWallets()
         {

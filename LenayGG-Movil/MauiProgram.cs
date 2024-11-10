@@ -20,6 +20,7 @@ namespace LenayGG_Movil
     {
         public static MauiApp CreateMauiApp()
         {
+            var ApiUrl = "https://lenaygg-backend.onrender.com/";
             var builder = MauiApp.CreateBuilder();
             builder
                 .UseMauiApp<App>()
@@ -31,17 +32,22 @@ namespace LenayGG_Movil
                 });
             builder.Services.AddHttpClient<ILogin, Login>(client =>
             {
-                client.BaseAddress = new Uri("https://lenaygg-backend.onrender.com/");
+                client.BaseAddress = new Uri(ApiUrl);
             });
 
             builder.Services.AddHttpClient<IWalletInfraestructure, WalletService>(client =>
             {
-                client.BaseAddress = new Uri("https://lenaygg-backend.onrender.com/");
+                client.BaseAddress = new Uri(ApiUrl);
             });
 
             builder.Services.AddHttpClient<ITransactionInfraestructure, TransactionService>(client =>
             {
-                client.BaseAddress = new Uri("https://lenaygg-backend.onrender.com/");
+                client.BaseAddress = new Uri(ApiUrl);
+            });
+
+            builder.Services.AddHttpClient<IUserInfrastructure, UserService>(client =>
+            {
+                client.BaseAddress = new Uri(ApiUrl);
             });
 
             // Sign In

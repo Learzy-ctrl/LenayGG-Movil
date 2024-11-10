@@ -18,7 +18,11 @@
                HeightRequest="200"
                CornerRadius="100"
                Padding="-2">
-            <Image Source="user"/>
+            <Image Source="{Binding PhotoUrl}"
+                   Aspect="AspectFill"/>
+            <Frame.GestureRecognizers>
+                <TapGestureRecognizer Command="{Binding SelectPhotoCommand}"/>
+            </Frame.GestureRecognizers>
         </Frame>
         <Image Grid.RowSpan="0"
                Source="camera"
@@ -33,7 +37,7 @@
                 <StackLayout Margin="50,0,30,0" Grid.Column="1">
                     <Label Text="Nombre(s)"
                        TextColor="Black"/>
-                    <local:BorderLessEntry Placeholder="Nombre(s)" Text="{Binding Descripcion}" Keyboard="Text" PlaceholderColor="Gray" TextColor="Black"/>
+                    <local:BorderLessEntry Placeholder="Nombre(s)" Text="{Binding UserName}" Keyboard="Text" PlaceholderColor="Gray" TextColor="Black"/>
                     <BoxView HeightRequest="2" Color="Black"/>
                 </StackLayout>
             </Grid>
@@ -45,7 +49,7 @@
                 <StackLayout Margin="50,0,30,0" Grid.Column="1">
                     <Label Text="Apellidos"
            TextColor="Black"/>
-                    <local:BorderLessEntry Placeholder="Apellidos" Text="{Binding Descripcion}" Keyboard="Text" PlaceholderColor="Gray" TextColor="Black"/>
+                    <local:BorderLessEntry Placeholder="Apellidos" Text="{Binding UserLastName}" Keyboard="Text" PlaceholderColor="Gray" TextColor="Black"/>
                     <BoxView HeightRequest="2" Color="Black"/>
                 </StackLayout>
             </Grid>
@@ -85,30 +89,6 @@
                             <ColumnDefinition Width="5*"/>
                         </Grid.ColumnDefinitions>
                         <Label Grid.Column="0"
-                               Text="Cambiar Email"
-                               Margin="4,10,0,10"
-                               TextColor="Gray"/>
-                        <Image Grid.Column="1"
-                               Source="refresh"
-                               WidthRequest="20"
-                               HorizontalOptions="EndAndExpand"
-                               Margin="0,0,10,0"/>
-                    </Grid>
-                    <BoxView HeightRequest="2" Color="Black"/>
-                </StackLayout>
-            </Grid>
-
-            <Grid Padding="0,30,0,0">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="10*"/>
-                </Grid.ColumnDefinitions>
-                <StackLayout Margin="50,0,30,0" Grid.Column="1">
-                    <Grid>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="5*"/>
-                            <ColumnDefinition Width="5*"/>
-                        </Grid.ColumnDefinitions>
-                        <Label Grid.Column="0"
                                Text="Eliminar cuenta"
                                Margin="4,10,0,10"
                                TextColor="#E76B6B"/>
@@ -119,6 +99,9 @@
                                Margin="0,0,10,0"/>
                     </Grid>
                     <BoxView HeightRequest="2" Color="#E76B6B"/>
+                    <StackLayout.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding DeleteUserCommand}"/>
+                    </StackLayout.GestureRecognizers>
                 </StackLayout>
             </Grid>
 
@@ -159,6 +142,7 @@
                 WidthRequest="100"
                 Margin="0,0,10,0"
                 VerticalOptions="CenterAndExpand"
-                HorizontalOptions="EndAndExpand"/>
+                HorizontalOptions="EndAndExpand"
+                Command="{Binding GoBackCommand}"/>
     </Grid>
 </ContentPage>

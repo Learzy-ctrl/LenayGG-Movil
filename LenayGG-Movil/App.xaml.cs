@@ -1,6 +1,5 @@
 ﻿using LenayGG_Movil.Views;
 using LenayGG_Movil.Views.Login;
-using LenayGG_Movil.Views.Tools.Account;
 
 #if ANDROID
 using AndroidX.AppCompat.Widget;
@@ -13,8 +12,6 @@ namespace LenayGG_Movil
         public App(TabbedPageContainer tabbedPageContainer, SignIn signIn)
         {
             InitializeComponent();
-
-
             var Token = SecureStorage.GetAsync("Token").Result;
             if (!string.IsNullOrEmpty(Token))
             {
@@ -24,7 +21,6 @@ namespace LenayGG_Movil
             {
                 MainPage = new NavigationPage(signIn);
             }
-
 #if ANDROID
 
 

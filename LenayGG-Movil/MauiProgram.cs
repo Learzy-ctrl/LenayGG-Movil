@@ -99,6 +99,8 @@ namespace LenayGG_Movil
             //Account
             builder.Services.AddTransient<UserPage>();
             builder.Services.AddTransient<UserViewModel>();
+            builder.Services.AddTransient<ChangePasswordPage>();
+            builder.Services.AddTransient<ChangePasswordViewModel>();
             return builder.Build();
         }
     }

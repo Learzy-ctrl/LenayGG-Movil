@@ -3,6 +3,7 @@ using CommunityToolkit.Mvvm.Input;
 using LenayGG_Movil.Infrastructure;
 using LenayGG_Movil.Models.UserModel;
 using LenayGG_Movil.Views.Login;
+using LenayGG_Movil.Views.Tools.Account;
 using System.Windows.Input;
 
 namespace LenayGG_Movil.ViewModels.Tools.Account
@@ -22,6 +23,7 @@ namespace LenayGG_Movil.ViewModels.Tools.Account
             GoBackCommand = new AsyncRelayCommand(GoBack);
             SelectPhotoCommand = new AsyncRelayCommand(SelectPhoto);
             DeleteUserCommand = new AsyncRelayCommand(DeleteUser);
+            GoToChangePasswordPageCommand = new AsyncRelayCommand(GoToChangePasswordPage);
             GetUser();
         }
 
@@ -207,6 +209,14 @@ namespace LenayGG_Movil.ViewModels.Tools.Account
                 }
             }
         }
+
+        private async Task GoToChangePasswordPage()
+        {
+            var userPage = _serviceProvider.GetService<ChangePasswordPage>();
+            UserDialogs.Instance.ShowLoading("Cargando");
+            await _navigation.PushModalAsync(userPage);
+            UserDialogs.Instance.HideLoading();
+        }
         #endregion
 
         #region Commands
@@ -214,6 +224,7 @@ namespace LenayGG_Movil.ViewModels.Tools.Account
         public ICommand GoBackCommand { get; private set; }
         public ICommand SelectPhotoCommand {  get; private set; }
         public ICommand DeleteUserCommand { get; private set; }
+        public ICommand GoToChangePasswordPageCommand { get; private set; }
         #endregion
     }
 }

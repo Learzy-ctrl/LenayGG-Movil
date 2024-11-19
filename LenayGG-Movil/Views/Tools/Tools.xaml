@@ -109,6 +109,9 @@
                                    FontAttributes="Bold"
                                    FontSize="Micro"/>
                         </VerticalStackLayout>
+                        <Frame.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding GoToReportsCommand}"/>
+                        </Frame.GestureRecognizers>
                     </Frame>
                 </Grid>
                 <Grid Grid.Row="1"

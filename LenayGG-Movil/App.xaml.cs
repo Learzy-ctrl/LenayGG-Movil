@@ -1,5 +1,8 @@
 ﻿using LenayGG_Movil.Views;
 using LenayGG_Movil.Views.Login;
+using LenayGG_Movil.Views.Tools.Reports;
+using Syncfusion.Licensing;
+
 
 #if ANDROID
 using AndroidX.AppCompat.Widget;
@@ -12,6 +15,9 @@ namespace LenayGG_Movil
         public App(TabbedPageContainer tabbedPageContainer, SignIn signIn)
         {
             InitializeComponent();
+
+            SyncfusionLicenseProvider.RegisterLicense("MzU4NDU4NEAzMjM3MmUzMDJlMzBFL1dkeU1aNXlNcitmMTUrUVJuTWowa0J4MWRGTG03VjRZT1MyVVJsREFVPQ==");
+
             var Token = SecureStorage.GetAsync("Token").Result;
             if (!string.IsNullOrEmpty(Token))
             {
@@ -22,8 +28,6 @@ namespace LenayGG_Movil
                 MainPage = new NavigationPage(signIn);
             }
 #if ANDROID
-
-
             Microsoft.Maui.Handlers.EntryHandler.Mapper.AppendToMapping(nameof(BorderLessEntry), (handler, view) =>
             {
                 if (handler.PlatformView is AppCompatEditText editText)

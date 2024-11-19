@@ -4,6 +4,7 @@ using LenayGG_Movil.ViewModels.Login;
 using LenayGG_Movil.ViewModels.Main;
 using LenayGG_Movil.ViewModels.Tools;
 using LenayGG_Movil.ViewModels.Tools.Account;
+using LenayGG_Movil.ViewModels.Tools.Reports;
 using LenayGG_Movil.ViewModels.Wallet;
 using LenayGG_Movil.Views;
 using LenayGG_Movil.Views.Login;
@@ -11,7 +12,9 @@ using LenayGG_Movil.Views.Main.Inicio;
 using LenayGG_Movil.Views.Main.Transacciones;
 using LenayGG_Movil.Views.Tools;
 using LenayGG_Movil.Views.Tools.Account;
+using LenayGG_Movil.Views.Tools.Reports;
 using LenayGG_Movil.Views.Wallet;
+using Syncfusion.Maui.Core.Hosting;
 using The49.Maui.BottomSheet;
 
 namespace LenayGG_Movil
@@ -25,6 +28,7 @@ namespace LenayGG_Movil
             builder
                 .UseMauiApp<App>()
                 .UseBottomSheet()
+                .ConfigureSyncfusionCore()
                 .ConfigureFonts(fonts =>
                 {
                     fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
@@ -46,6 +50,11 @@ namespace LenayGG_Movil
             });
 
             builder.Services.AddHttpClient<IUserInfrastructure, UserService>(client =>
+            {
+                client.BaseAddress = new Uri(ApiUrl);
+            });
+
+            builder.Services.AddHttpClient<IReportInfrastructure, ReportService>(client =>
             {
                 client.BaseAddress = new Uri(ApiUrl);
             });
@@ -101,6 +110,10 @@ namespace LenayGG_Movil
             builder.Services.AddTransient<UserViewModel>();
             builder.Services.AddTransient<ChangePasswordPage>();
             builder.Services.AddTransient<ChangePasswordViewModel>();
+
+            //Reports
+            builder.Services.AddTransient<ReportPage>();
+            builder.Services.AddTransient<ReportViewModel>();
             return builder.Build();
         }
     }

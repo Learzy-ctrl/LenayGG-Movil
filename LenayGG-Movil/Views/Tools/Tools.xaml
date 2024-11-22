@@ -25,11 +25,19 @@
                     WidthRequest="20"
                     VerticalOptions="CenterAndExpand"
                     HorizontalOptions="StartAndExpand"/>
-                <Image Grid.Column="1" 
-                       Source="user"
-                       WidthRequest="30"
+                <Frame Grid.Column="1"
+                       BorderColor="Transparent"
+                       BackgroundColor="#D9D9D9"
                        VerticalOptions="CenterAndExpand"
-                       HorizontalOptions="EndAndExpand"/>
+                       HorizontalOptions="EndAndExpand"
+                       CornerRadius="100"
+                       WidthRequest="25"
+                       HeightRequest="25"
+                       Padding="-2">
+                    <Image Source="{Binding PhotoUrl}"
+                           Aspect="AspectFill"/>
+                </Frame>
+
             </Grid>
 
 
@@ -42,7 +50,7 @@
                        TextColor="Black"
                        FontAttributes="Bold"
                        FontSize="Title"/>
-                <Label Text="Israel Curiel"
+                <Label Text="{Binding UserName}"
                        TextColor="Black"
                        FontAttributes="Bold"
                        FontSize="Title"/>
@@ -60,55 +68,33 @@
                     <RowDefinition Height="5*"/>
                     <RowDefinition Height="5*"/>
                 </Grid.RowDefinitions>
-                <Grid Grid.Row="0">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="5*"/>
-                        <ColumnDefinition Width="5*"/>
-                    </Grid.ColumnDefinitions>
-
-                    <Frame Grid.Column="0"
-                           HeightRequest="170"
-                           CornerRadius="30"
-                           BackgroundColor="#D4C32C"
-                           BorderColor="Transparent"
-                           Margin="0,0,10,0">
-                        <VerticalStackLayout>
-                            <Image Source="checklist"
-                                   WidthRequest="50"
-                                   HorizontalOptions="StartAndExpand"
-                                   Margin="0,15,0,0"/>
-                            <Label Text="Presupuestos"
-                                   TextColor="White"
-                                   Padding="0,10,0,0"
-                                   FontAttributes="Bold"/>
-                            <Label Text="Crea tus presupuestos"
-                                   TextColor="#EBEBEB"
-                                   Padding="0,0,0,0"
-                                   FontAttributes="Bold"
-                                   FontSize="Micro"/>
-                        </VerticalStackLayout>
-                    </Frame>
-                    <Frame Grid.Column="1"
-                           HeightRequest="170"
+                <Grid Grid.Row="0"
+                      Margin="0,90,0,0">
+                    <Frame HeightRequest="140"
                            CornerRadius="30"
                            BackgroundColor="#04B1A8"
                            BorderColor="Transparent"
-                           Margin="10,0,0,0">
-                        <VerticalStackLayout>
+                           VerticalOptions="StartAndExpand">
+                        <HorizontalStackLayout>
                             <Image Source="report"
-                                   WidthRequest="50"
+                                   WidthRequest="70"
                                    HorizontalOptions="StartAndExpand"
-                                   Margin="0,15,0,0"/>
-                            <Label Text="Reportes"
+                                   VerticalOptions="CenterAndExpand"
+                                   Margin="10,0,0,0"/>
+                            <VerticalStackLayout VerticalOptions="CenterAndExpand"
+                                                 Margin="20,0,0,0">
+                                <Label Text="Reportes"
                                    TextColor="White"
                                    Padding="0,10,0,0"
                                    FontAttributes="Bold"/>
-                            <Label Text="Visualiza tus movimientos"
+                                <Label Text="Visualiza tus movimientos"
                                    TextColor="#EBEBEB"
                                    Padding="0,0,0,0"
                                    FontAttributes="Bold"
                                    FontSize="Micro"/>
-                        </VerticalStackLayout>
+                            </VerticalStackLayout>
+
+                        </HorizontalStackLayout>
                         <Frame.GestureRecognizers>
                             <TapGestureRecognizer Command="{Binding GoToReportsCommand}"/>
                         </Frame.GestureRecognizers>

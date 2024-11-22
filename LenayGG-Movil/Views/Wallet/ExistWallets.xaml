@@ -12,7 +12,7 @@
             </CollectionView.ItemsLayout>
             <CollectionView.ItemTemplate>
                 <DataTemplate>
-                    <Frame BackgroundColor="{Binding Color}"
+                    <Frame BackgroundColor="{Binding ColorWallet}"
                            BorderColor="Transparent"
                            Margin="30,0,30,0"
                            CornerRadius="25"
@@ -32,12 +32,12 @@
 
                             <Grid Padding="0,30,0,0">
                                 <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="2*"/>
+                                    <ColumnDefinition Width="2.5*"/>
                                     <ColumnDefinition Width="5*"/>
                                     <ColumnDefinition Width="3*"/>
                                 </Grid.ColumnDefinitions>
                                 <Label Grid.Column="0"
-                                       Text="debes"
+                                       Text="{Binding Label}"
                                        HorizontalOptions="End"
                                        VerticalOptions="End"
                                        Padding="0,0,5,10"/>
@@ -54,7 +54,7 @@
                                 </Frame>
                             </Grid>
 
-                            <Grid Padding="0,15,0,10">
+                            <Grid Padding="0,15,0,10" >
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="5*"/>
                                     <ColumnDefinition Width="5*"/>
@@ -62,18 +62,22 @@
 
                                 <HorizontalStackLayout Grid.Column="0">
                                     <Label Text="Disponible:  "
-                                           FontSize="12"/>
-                                    <Label Text="{Binding Saldo}"
                                            FontSize="12"
-                                           FontAttributes="Bold"/>
+                                           IsVisible="{Binding isVisible}"/>
+                                    <Label Text="{Binding LimiteCredito}"
+                                           FontSize="12"
+                                           FontAttributes="Bold"
+                                           IsVisible="{Binding isVisible}"/>
                                 </HorizontalStackLayout>
                                 <HorizontalStackLayout Grid.Column="1"
                                            HorizontalOptions="EndAndExpand">
                                     <Label Text="Fecha Pago:  "
-                                           FontSize="12"/>
+                                           FontSize="12"
+                                           IsVisible="{Binding isVisible}"/>
                                     <Label Text="{Binding FechaDePago}"
                                            FontSize="12"
-                                           FontAttributes="Bold"/>
+                                           FontAttributes="Bold"
+                                           IsVisible="{Binding isVisible}"/>
                                 </HorizontalStackLayout>
                             </Grid>
                         </VerticalStackLayout>

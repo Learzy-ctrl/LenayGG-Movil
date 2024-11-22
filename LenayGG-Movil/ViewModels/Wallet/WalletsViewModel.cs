@@ -24,7 +24,7 @@ namespace LenayGG_Movil.ViewModels.Wallet
             _login = login;
             GoToCreateWalletCommand = new AsyncRelayCommand(GoToCreateWallet);
             RefreshPageCommand = new AsyncRelayCommand(RefreshView);
-            GoToDetailWalletCommand = new AsyncRelayCommand<WalletDto>(GoToDetailWallet);
+            GoToDetailWalletCommand = new AsyncRelayCommand<WalletFilter>(GoToDetailWallet);
             _serviceProvider = serviceProvider;
             RefreshView();
         }
@@ -32,7 +32,7 @@ namespace LenayGG_Movil.ViewModels.Wallet
         #region Variables
         private bool _isrefreshing;
         private View _contentView;
-        private List<WalletDto> _walletList;
+        private List<WalletFilter> _walletList;
         #endregion
 
         #region Objects
@@ -48,7 +48,7 @@ namespace LenayGG_Movil.ViewModels.Wallet
             set { SetValue(ref _contentView, value); }
         }
 
-        public List<WalletDto> WalletList
+        public List<WalletFilter> WalletList
         {
             get { return _walletList; }
             set { SetValue(ref _walletList, value); }
@@ -80,7 +80,7 @@ namespace LenayGG_Movil.ViewModels.Wallet
                 }
                 else
                 {
-                    WalletList = list;
+                    WalletList = FilterWallets(list);
                     ContentView = new ExistWallets();
                 }
                 isRefreshing = false;
@@ -127,7 +127,49 @@ namespace LenayGG_Movil.ViewModels.Wallet
             return list;
         }
 
-        private async Task GoToDetailWallet(WalletDto walletDto)
+        private List<WalletFilter> FilterWallets(List<WalletDto> wallets)
+        {
+            var list = new List<WalletFilter>();
+            foreach(var w in wallets)
+            {
+                WalletFilter walletfilter;
+                if(w.IdTipoCuenta == 1)
+                {
+                    walletfilter = new WalletFilter()
+                    {
+                        Id = w.Id,
+                        Nombre = w.Nombre,
+                        Saldo = Math.Abs(w.Saldo),
+                        LimiteCredito = w.LimiteCredito + w.Saldo,
+                        IdTipoCuenta = w.IdTipoCuenta,
+                        FechaDePago = w.FechaDePago.ToString("d"),
+                        ColorWallet = w.Color,
+                        Label = "Debes: $",
+                        isVisible = true,
+                    };
+                    list.Add(walletfilter);
+                }
+                else
+                {
+                    walletfilter = new WalletFilter()
+                    {
+                        Id = w.Id,
+                        Nombre = w.Nombre,
+                        Saldo = w.Saldo,
+                        LimiteCredito = w.LimiteCredito,
+                        IdTipoCuenta = w.IdTipoCuenta,
+                        FechaDePago = w.FechaDePago.ToString("d"),
+                        ColorWallet = w.Color,
+                        Label = "Tienes: $",
+                        isVisible = false,
+                    };
+                    list.Add(walletfilter);
+                }
+            }
+            return list;
+        }
+
+        private async Task GoToDetailWallet(WalletFilter walletDto)
         {
             var id = walletDto.Id;
             if(walletDto.IdTipoCuenta == 1)

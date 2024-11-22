@@ -1,6 +1,8 @@
 ﻿using Acr.UserDialogs;
 using CommunityToolkit.Mvvm.Input;
+using CommunityToolkit.Mvvm.Messaging;
 using LenayGG_Movil.Infrastructure;
+using LenayGG_Movil.Mensajes;
 using LenayGG_Movil.Models;
 using LenayGG_Movil.Models.TransactionModel;
 using LenayGG_Movil.Models.WalletModel;
@@ -29,6 +31,10 @@ namespace LenayGG_Movil.ViewModels.Main
             _login = login;
             _transactionInfraestructure = transactionInfraestructure;
             _walletInfraestructure = walletInfraestructure;
+            WeakReferenceMessenger.Default.Register<ModalClosedMessage>(this, (r, message) =>
+            {
+                RefreshTransactions();
+            });
             _ = InitializeAsync();
         }
 

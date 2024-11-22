@@ -1,6 +1,8 @@
 ﻿using Acr.UserDialogs;
 using CommunityToolkit.Mvvm.Input;
+using CommunityToolkit.Mvvm.Messaging;
 using LenayGG_Movil.Infrastructure;
+using LenayGG_Movil.Mensajes;
 using LenayGG_Movil.Models.UserModel;
 using LenayGG_Movil.Views.Login;
 using LenayGG_Movil.Views.Tools.Account;
@@ -170,6 +172,7 @@ namespace LenayGG_Movil.ViewModels.Tools.Account
                 {
                     return false;
                 }
+                WeakReferenceMessenger.Default.Send(new ToolsMessage());
                 return true;
             }
             return false;

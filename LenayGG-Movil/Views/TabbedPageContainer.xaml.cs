@@ -1,5 +1,4 @@
 using LenayGG_Movil.Views.Main.Inicio;
-using LenayGG_Movil.Views.Tools;
 using LenayGG_Movil.Views.Wallet;
 using Microsoft.Maui.Controls.PlatformConfiguration.AndroidSpecific;
 

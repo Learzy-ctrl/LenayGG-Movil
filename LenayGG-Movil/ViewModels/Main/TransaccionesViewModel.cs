@@ -1,6 +1,8 @@
 ﻿using Acr.UserDialogs;
 using CommunityToolkit.Mvvm.Input;
+using CommunityToolkit.Mvvm.Messaging;
 using LenayGG_Movil.Infrastructure;
+using LenayGG_Movil.Mensajes;
 using LenayGG_Movil.Models;
 using LenayGG_Movil.Models.TransactionModel;
 using LenayGG_Movil.Models.WalletModel;
@@ -159,7 +161,7 @@ namespace LenayGG_Movil.ViewModels.Main
             {
                 SetValues(typeTransaction);
                 await CreateTransaction(typeTransaction);
-                ClearObjects();
+                await _navigation.PopModalAsync();
             }
         }
         private int GetTypeTransaction()
@@ -353,6 +355,7 @@ namespace LenayGG_Movil.ViewModels.Main
                 }
                 else
                 {
+                    WeakReferenceMessenger.Default.Send(new ModalClosedMessage());
                     UserDialogs.Instance.HideLoading();
                     await DisplayAlert(response.Resultado, "Se ha registrado correctamente", "OK");
                     sen = false;
@@ -375,17 +378,6 @@ namespace LenayGG_Movil.ViewModels.Main
                 Resultado = "Error",
                 NumError = 3
             };
-        }
-        private void ClearObjects()
-        {
-            Dinero = 0;
-            Descripcion = "";
-            Fecha = DateTime.Now;
-            SelectedCategoriaItem = null;
-            TransactionAgg = null;
-            TransferAgg = null;
-            Wallet = null;
-            Wallet2 = null;
         }
         private async void GetWallets()
         {

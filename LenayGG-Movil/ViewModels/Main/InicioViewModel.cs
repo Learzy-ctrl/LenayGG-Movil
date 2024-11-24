@@ -137,7 +137,7 @@ namespace LenayGG_Movil.ViewModels.Main
             if(WalletList.Count == 0 || WalletList == null)
             {
                 await DisplayAlert("Transacciones", "Para crear una transaccion debes tener una billetera, crea una nueva", "OK");
-            }
+            }else
             {
                 var transaccionLayOut = _serviceProvider.GetService<TransaccionLayOut>();
                 UserDialogs.Instance.ShowLoading("Cargando");

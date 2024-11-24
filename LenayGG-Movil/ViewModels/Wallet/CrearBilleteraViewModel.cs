@@ -1,4 +1,5 @@
 ﻿using Acr.UserDialogs;
+using CommunityToolkit.Maui.Views;
 using CommunityToolkit.Mvvm.Input;
 using LenayGG_Movil.Infrastructure;
 using LenayGG_Movil.Models.WalletModel;
@@ -32,8 +33,8 @@ namespace LenayGG_Movil.ViewModels.Wallet
         private string _nombre;
         private int _tipoCuenta;
         private decimal _limiteCredito;
-        private DateTime _fechaPago;
-        private DateTime _fechaCorte;
+        private DateTime _fechaPago = DateTime.Now;
+        private DateTime _fechaCorte = DateTime.Now;
         private decimal _tasaInteres;
         private string _color;
         private decimal _saldo;
@@ -176,7 +177,13 @@ namespace LenayGG_Movil.ViewModels.Wallet
 
         private async Task ShowBottomSheet()
         {
-
+            var popUp = new ColorPickerPopup();
+            var result = await Application.Current.MainPage.ShowPopupAsync(popUp);
+            if(result != null)
+            {
+                string selectedColorHex = result.ToString();
+                _Color = selectedColorHex;
+            }
         }
         #endregion
     }

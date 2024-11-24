@@ -1,4 +1,5 @@
-﻿using LenayGG_Movil.Infrastructure;
+﻿using CommunityToolkit.Maui;
+using LenayGG_Movil.Infrastructure;
 using LenayGG_Movil.Services;
 using LenayGG_Movil.ViewModels.Login;
 using LenayGG_Movil.ViewModels.Main;
@@ -27,6 +28,7 @@ namespace LenayGG_Movil
             var builder = MauiApp.CreateBuilder();
             builder
                 .UseMauiApp<App>()
+                .UseMauiCommunityToolkit()
                 .UseBottomSheet()
                 .ConfigureSyncfusionCore()
                 .ConfigureFonts(fonts =>

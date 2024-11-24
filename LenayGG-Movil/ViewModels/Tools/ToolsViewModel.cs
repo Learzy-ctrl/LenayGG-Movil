@@ -67,31 +67,33 @@ namespace LenayGG_Movil.ViewModels.Tools
         }
 
         private async void GetUser()
-        
         {
-            bool sen;
+            bool sen = false;
             do
             {
                 var token = SecureStorage.GetAsync("Token").Result;
-                _userDto = await _userInfrastructure.GetUserAsync(token);
-                if (_userDto.NombreUser == "Error de conexion")
+                if (!string.IsNullOrEmpty(token))
                 {
-                    await DisplayAlert("Error", "Conectate internet para continuar", "OK");
-                    sen = false;
-                }
-                if (_userDto.NombreUser == "Token expirado")
-                {
-                    var email = SecureStorage.GetAsync("Email").Result;
-                    var password = SecureStorage.GetAsync("Password").Result;
-                    var result = await _login.SignIn(email, password);
-                    await SecureStorage.SetAsync("Token", result.Resultado);
-                    sen = true;
-                }
-                else
-                {
-                    PhotoUrl = _userDto.FotoUser != null ? _userDto.FotoUser : "user";
-                    UserName = _userDto.NombreUser + " " + _userDto.ApellidoUsuario;
-                    sen = false;
+                    _userDto = await _userInfrastructure.GetUserAsync(token);
+                    if (_userDto.NombreUser == "Error de conexion")
+                    {
+                        await DisplayAlert("Error", "Conectate internet para continuar", "OK");
+                        sen = false;
+                    }
+                    if (_userDto.NombreUser == "Token expirado")
+                    {
+                        var email = SecureStorage.GetAsync("Email").Result;
+                        var password = SecureStorage.GetAsync("Password").Result;
+                        var result = await _login.SignIn(email, password);
+                        await SecureStorage.SetAsync("Token", result.Resultado);
+                        sen = true;
+                    }
+                    else
+                    {
+                        PhotoUrl = _userDto.FotoUser != null ? _userDto.FotoUser : "user";
+                        UserName = _userDto.NombreUser + " " + _userDto.ApellidoUsuario;
+                        sen = false;
+                    }
                 }
             } while (sen);
         }

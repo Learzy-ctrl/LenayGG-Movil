@@ -49,11 +49,13 @@
                            Text="debes"
                            HorizontalOptions="End"
                            VerticalOptions="End"
-                           Padding="0,0,5,10"/>
+                           Padding="0,0,5,10"
+                           TextColor="White"/>
                     <Label Grid.Column="1"
                            Text="{Binding WalletDto.Saldo}"
                            FontSize="25"
-                           FontAttributes="Bold"/>
+                           FontAttributes="Bold"
+                           TextColor="White"/>
                     <Frame Grid.Column="2"
                            BackgroundColor="#f0f0f0"
                            BorderColor="#f0f0f0"
@@ -71,18 +73,22 @@
 
                     <HorizontalStackLayout Grid.Column="0">
                         <Label Text="Fecha Corte:  "
-                               FontSize="12"/>
+                               FontSize="12"
+                               TextColor="White"/>
                         <Label Text="{Binding WalletDto.FechaCorte}"
                                FontSize="12"
-                               FontAttributes="Bold"/>
+                               FontAttributes="Bold"
+                               TextColor="White"/>
                     </HorizontalStackLayout>
                     <HorizontalStackLayout Grid.Column="1"
                                            HorizontalOptions="EndAndExpand">
                         <Label Text="Fecha Pago:  "
-                               FontSize="12"/>
+                               FontSize="12"
+                               TextColor="White"/>
                         <Label Text="{Binding WalletDto.FechaDePago}"
                                FontSize="12"
-                               FontAttributes="Bold"/>
+                               FontAttributes="Bold"
+                               TextColor="White"/>
                     </HorizontalStackLayout>
                 </Grid>
             </VerticalStackLayout>

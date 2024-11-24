@@ -49,11 +49,13 @@
                            Text="Total: "
                            HorizontalOptions="End"
                            VerticalOptions="End"
-                           Padding="0,0,0,5"/>
+                           Padding="0,0,0,5"
+                                   TextColor="White"/>
                             <Label Grid.Column="1"
                            Text="{Binding Disponible}"
                            FontSize="25"
-                           FontAttributes="Bold"/>
+                           FontAttributes="Bold"
+                                   TextColor="White"/>
                         </Grid>
 
                         <Grid Padding="0,15,0,10">
@@ -68,10 +70,12 @@
                                        FontSize="12"
                                        FontAttributes="Bold"
                                        VerticalOptions="End"
-                                       Padding="0,0,0,5"/>
+                                       Padding="0,0,0,5"
+                                       TextColor="White"/>
                                 <Label Text="{Binding Gastado}"
                                FontSize="23"
-                               FontAttributes="Bold"/>
+                               FontAttributes="Bold"
+                                       TextColor="White"/>
                             </HorizontalStackLayout>
                         </Grid>
                     </VerticalStackLayout>
@@ -88,6 +92,7 @@
                             FontAttributes="Bold"
                             BackgroundColor="White"
                             Margin="10,15,10,15"
+                            TextColor="Black"
                             Command="{Binding UnifyWalletsCommand}"/>
                     <Frame Grid.Column="1"
                            BorderColor="Transparent"

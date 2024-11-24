@@ -21,10 +21,10 @@
 		<Nullable>enable</Nullable>
 
 		<!-- Display name -->
-		<ApplicationTitle>LenayGG-Movil</ApplicationTitle>
+		<ApplicationTitle>Lenay Gestor de Gastos</ApplicationTitle>
 
 		<!-- App Identifier -->
-		<ApplicationId>com.companyname.lenayggmovil</ApplicationId>
+		<ApplicationId>com.amazingdevelop.lenaygestordegastos</ApplicationId>
 
 		<!-- Versions -->
 		<ApplicationDisplayVersion>1.0</ApplicationDisplayVersion>

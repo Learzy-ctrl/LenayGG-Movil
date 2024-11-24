@@ -1,5 +1,4 @@
 using LenayGG_Movil.Views.Main.Inicio;
-using LenayGG_Movil.Views.Tools;
 using LenayGG_Movil.Views.Wallet;
 using Microsoft.Maui.Controls.PlatformConfiguration.AndroidSpecific;
 
@@ -24,10 +23,12 @@ public partial class TabbedPageContainer : Microsoft.Maui.Controls.TabbedPage
         walletPage.IconImageSource = "wallet";
         this.Children.Add(walletPage);
 
+        /*
         var notificationPage = new Notification.Notifications();
         notificationPage.Title = "Notificaciones";
         notificationPage.IconImageSource = "ringing";
         this.Children.Add(notificationPage);
+        */
 
         var toolPage = tools;
         toolPage.Title = "Mas";

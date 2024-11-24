@@ -69,9 +69,9 @@
                     </Grid.ColumnDefinitions>
 
                     <HorizontalStackLayout Grid.Column="0">
-                        <Label Text="Gastado hoy:  "
+                        <Label Text=""
                        FontSize="12"/>
-                        <Label Text="{Binding WalletDto.Saldo}"
+                        <Label Text=""
                        FontSize="12"
                        FontAttributes="Bold"/>
                     </HorizontalStackLayout>

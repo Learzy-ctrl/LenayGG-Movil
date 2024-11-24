@@ -155,7 +155,10 @@ namespace LenayGG_Movil.ViewModels.Wallet
                 }
                 else
                 {
-                    WalletDto = response as WalletDto;
+                    var wallet = response as WalletDto;
+                    wallet.FechaDePago = DateTime.Parse(wallet.FechaDePago.ToString("d"));
+                    wallet.FechaCorte = DateTime.Parse(wallet.FechaCorte.ToString("d"));
+                    WalletDto = wallet;
                     sen = false;
                     UserDialogs.Instance.HideLoading();
                 }

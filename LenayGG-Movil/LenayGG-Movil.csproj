@@ -40,10 +40,10 @@
 
 	<ItemGroup>
 		<!-- App Icon -->
-		<MauiIcon Include="Resources\AppIcon\logoicon.jpg" Color="White" ForegroundScale="0.65" />
+		<MauiIcon Include="Resources\AppIcon\lenayicono.png" Color="White" ForegroundScale="0.65" />
 
 		<!-- Splash Screen -->
-		<MauiSplashScreen Include="Resources\Splash\logotipo.jpg" Color="#512BD4" BaseSize="128,128" />
+		<MauiSplashScreen Include="Resources\Splash\lenaysplash.png" Color="White" BaseSize="128,128" />
 
 		<!-- Images -->
 		<MauiImage Include="Resources\Images\*" />
@@ -57,6 +57,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <None Remove="Resources\AppIcon\lenayicono.png" />
 	  <None Remove="Resources\AppIcon\logoIcon.jpg" />
 	  <None Remove="Resources\Images\baby.png" />
 	  <None Remove="Resources\Images\balance.png" />
@@ -78,7 +79,7 @@
 	  <None Remove="Resources\Images\hiking.png" />
 	  <None Remove="Resources\Images\home.png" />
 	  <None Remove="Resources\Images\homee.png" />
-	  <None Remove="Resources\Images\logotipo.jpg" />
+	  <None Remove="Resources\Images\logotipo.png" />
 	  <None Remove="Resources\Images\logout.png" />
 	  <None Remove="Resources\Images\menus.png" />
 	  <None Remove="Resources\Images\paw.png" />
@@ -101,6 +102,7 @@
 	  <None Remove="Resources\Images\utensils.png" />
 	  <None Remove="Resources\Images\view.png" />
 	  <None Remove="Resources\Images\wallet.png" />
+	  <None Remove="Resources\Splash\lenaysplash.png" />
 	  <None Remove="Resources\Splash\logotipo.jpg" />
 	</ItemGroup>
 

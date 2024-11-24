@@ -56,7 +56,7 @@
                 TextColor="White"
                 FontAttributes="Bold"
                 FontSize="Title"
-                BackgroundColor="#67AE08"
+                BackgroundColor="#00979F"
                 Margin="0,80,20,0"
                 Padding="30,20,30,20"
                 VerticalOptions="End"

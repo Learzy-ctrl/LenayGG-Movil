@@ -141,7 +141,7 @@
                     CornerRadius="50"
                     Text="✔"
                     TextColor="White"
-                    BackgroundColor="#67AE08"
+                    BackgroundColor="#00979F"
                     FontAttributes="Bold"
                     FontSize="Title"
                     Padding="6"

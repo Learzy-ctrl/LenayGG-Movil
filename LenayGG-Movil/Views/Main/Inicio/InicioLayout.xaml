@@ -14,7 +14,7 @@
         <Frame Grid.Row="0"
                CornerRadius="50"
                Margin="0,-50,0,0"
-               BackgroundColor="#67AE08"
+               BackgroundColor="#1E88E5"
                BorderColor="Transparent">
             <Grid Padding="0,50,0,0">
                 <Grid.RowDefinitions>
@@ -118,7 +118,7 @@
                 Text="+"
                 FontSize="25"
                 Padding="20,10,20,10"
-                BackgroundColor="#67AE08"
+                BackgroundColor="#00979F"
                 Command="{Binding GoToTransaccionCommand}"/>
         
     </Grid>

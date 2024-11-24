@@ -16,8 +16,8 @@
             <Frame HorizontalOptions="Start"
                    VerticalOptions="Start"
                    CornerRadius="50"
-                   BackgroundColor="#67AE08"
-                   BorderColor="#67AE08"
+                   BackgroundColor="#1E88E5"
+                   BorderColor="Transparent"
                    Padding="10 ">
                 <Label Text="Billeteras"
                        FontSize="Subtitle"/>
@@ -32,7 +32,7 @@
                 VerticalOptions="EndAndExpand" 
                 HorizontalOptions="EndAndExpand" 
                 Margin="25"
-                BackgroundColor="#67AE08"
+                BackgroundColor="#00979F"
                 CornerRadius="50"
                 Text="+"
                 TextColor="White"

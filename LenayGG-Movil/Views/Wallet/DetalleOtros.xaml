@@ -49,11 +49,13 @@
                    Text="Tienes"
                    HorizontalOptions="End"
                    VerticalOptions="End"
-                   Padding="0,0,5,10"/>
+                   Padding="0,0,5,10"
+                           TextColor="White"/>
                     <Label Grid.Column="1"
                    Text="{Binding WalletDto.Saldo}"
                    FontSize="25"
-                   FontAttributes="Bold"/>
+                   FontAttributes="Bold"
+                           TextColor="White"/>
                     <Frame Grid.Column="2"
                    BackgroundColor="#f0f0f0"
                    BorderColor="#f0f0f0"
@@ -123,7 +125,7 @@
                     CornerRadius="50"
                     Text="✔"
                     TextColor="White"
-                    BackgroundColor="#67AE08"
+                    BackgroundColor="#00979F"
                     FontAttributes="Bold"
                     FontSize="Title"
                     Padding="6"

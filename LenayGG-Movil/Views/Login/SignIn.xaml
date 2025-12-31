@@ -14,7 +14,7 @@
         </Grid.RowDefinitions>
 
         <!-- Fondo verde -->
-        <BoxView Grid.Row="0" Color="#8BC34A" HorizontalOptions="Fill" VerticalOptions="Fill" />
+        <BoxView Grid.Row="0" Color="#1E88E5" HorizontalOptions="Fill" VerticalOptions="Fill" Margin="0,-50,0,0" CornerRadius="35" BackgroundColor="#E5E5E5"/>
 
         <!-- Frame blanco -->
         <Frame Grid.Row="0" Grid.RowSpan="2"
@@ -54,12 +54,12 @@
                 </Frame>
 
                 <!-- Botón de Login -->
-                <Button Text="Login in" TextColor="White" BackgroundColor="Black" HeightRequest="50" CornerRadius="25" Command="{Binding SignInCommand}"/>
+                <Button Text="Ingresar" TextColor="White" BackgroundColor="Black" HeightRequest="50" CornerRadius="25" Command="{Binding SignInCommand}"/>
 
                 <!-- Enlace para registrarse -->
                 <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
                     <Label Text="¿No tienes Cuenta?" TextColor="Black" />
-                    <Label Text=" Únete" TextColor="#8BC34A" FontAttributes="Bold" >
+                    <Label Text=" Únete" TextColor="#00979F" FontAttributes="Bold" >
                         <Label.GestureRecognizers>
                             <TapGestureRecognizer Command="{Binding GoToSignUpCommand}"/>
                         </Label.GestureRecognizers>
@@ -67,7 +67,7 @@
                 </StackLayout>
 
                 <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
-                    <Label Text="¿Olvidaste tu contraseña?" TextColor="#8BC34A" FontAttributes="Bold" >
+                    <Label Text="¿Olvidaste tu contraseña?" TextColor="#00979F" FontAttributes="Bold" >
                         <Label.GestureRecognizers>
                             <TapGestureRecognizer Command="{Binding GoToResetPasswordCommand}"/>
                         </Label.GestureRecognizers>

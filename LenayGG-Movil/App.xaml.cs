@@ -2,7 +2,7 @@
 using LenayGG_Movil.Views.Login;
 using LenayGG_Movil.Views.Tools.Reports;
 using Syncfusion.Licensing;
-
+using Plugin.Firebase.CloudMessaging;
 
 #if ANDROID
 using AndroidX.AppCompat.Widget;
@@ -15,9 +15,8 @@ namespace LenayGG_Movil
         public App(TabbedPageContainer tabbedPageContainer, SignIn signIn)
         {
             InitializeComponent();
-
             SyncfusionLicenseProvider.RegisterLicense("MzU4NDU4NEAzMjM3MmUzMDJlMzBFL1dkeU1aNXlNcitmMTUrUVJuTWowa0J4MWRGTG03VjRZT1MyVVJsREFVPQ==");
-
+            Messaging();
             var Token = SecureStorage.GetAsync("Token").Result;
             if (!string.IsNullOrEmpty(Token))
             {
@@ -53,6 +52,12 @@ namespace LenayGG_Movil
                 }
             });
 #endif
+        }
+
+        private async void Messaging()
+        {
+            await CrossFirebaseCloudMessaging.Current.CheckIfValidAsync();
+            var token = await CrossFirebaseCloudMessaging.Current.GetTokenAsync();
         }
     }
 }

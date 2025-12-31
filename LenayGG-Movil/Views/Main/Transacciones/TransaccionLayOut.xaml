@@ -14,7 +14,7 @@
         <Frame Grid.Row="0"
                CornerRadius="40"
                Margin="0,-40,0,0"
-               BackgroundColor="#67AE08"
+               BackgroundColor="#1E88E5"
                BorderColor="Transparent"
                HasShadow="True">
             <Frame.Shadow>
@@ -42,7 +42,7 @@
                     </Grid.ColumnDefinitions>
 
                     <VerticalStackLayout Grid.Column="0">
-                        <Button BackgroundColor="#9FC769"
+                        <Button BackgroundColor="#69AFED"
                                 Margin="0,0,0,5"
                                 Padding="-10"
                                 CornerRadius="50"
@@ -52,7 +52,7 @@
                                 Text="¿Transferir?"
                                 FontSize="12"
                                 Command="{Binding ChangeToTransferenciaCommand}"/>
-                        <Button BackgroundColor="#9FC769"
+                        <Button BackgroundColor="#69AFED"
                                 Margin="0,0,0,5"
                                 Padding="-10"
                                 CornerRadius="50"
@@ -62,7 +62,7 @@
                                 Text="¿Ingresar?"
                                 FontSize="12"
                                 Command="{Binding ChangeToIngresoCommand}"/>
-                        <Button BackgroundColor="#9FC769"
+                        <Button BackgroundColor="#69AFED"
                                 Margin="0,0,0,5"
                                 Padding="-10"
                                 CornerRadius="50"
@@ -99,7 +99,7 @@
                 Text="+"
                 FontSize="25"
                 Padding="20,10,20,10"
-                BackgroundColor="#67AE08"
+                BackgroundColor="#00979F"
                 Command="{Binding SaveTransactionCommand}"/>
     </Grid>
 </ContentPage>

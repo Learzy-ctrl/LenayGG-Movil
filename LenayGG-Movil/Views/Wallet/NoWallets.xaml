@@ -22,7 +22,7 @@
                     HorizontalOptions="Center"
                     VerticalOptions="Center"
                     CornerRadius="25"
-                    BackgroundColor="#9FC769"
+                    BackgroundColor="#00979F"
                     TextColor="White"
                     Command="{Binding GoToCreateWalletCommand}"/>
                 </VerticalStackLayout>

@@ -134,10 +134,16 @@ namespace LenayGG_Movil.ViewModels.Main
         }
         private async Task GoToTransaccion()
         {
-            var transaccionLayOut = _serviceProvider.GetService<TransaccionLayOut>();
-            UserDialogs.Instance.ShowLoading("Cargando");
-            await _navigation.PushModalAsync(transaccionLayOut);
-            UserDialogs.Instance.HideLoading();
+            if(WalletList.Count == 0 || WalletList == null)
+            {
+                await DisplayAlert("Transacciones", "Para crear una transaccion debes tener una billetera, crea una nueva", "OK");
+            }else
+            {
+                var transaccionLayOut = _serviceProvider.GetService<TransaccionLayOut>();
+                UserDialogs.Instance.ShowLoading("Cargando");
+                await _navigation.PushModalAsync(transaccionLayOut);
+                UserDialogs.Instance.HideLoading();
+            }
         }
         private async Task RefreshTransactions()
         {

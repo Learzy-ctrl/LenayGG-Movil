@@ -137,7 +137,7 @@
             </Grid>
         </VerticalStackLayout>
         <Button Grid.Row="2"
-                BackgroundColor="#67AE08"
+                BackgroundColor="#00979F"
                 Text="Regresar"
                 TextColor="White"
                 FontAttributes="Bold"

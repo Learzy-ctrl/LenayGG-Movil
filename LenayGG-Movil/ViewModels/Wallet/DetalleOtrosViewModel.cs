@@ -156,8 +156,8 @@ namespace LenayGG_Movil.ViewModels.Wallet
                 else
                 {
                     var wallet = response as WalletDto;
-                    wallet.FechaDePago = DateTime.Parse(wallet.FechaDePago.ToString("d"));
-                    wallet.FechaCorte = DateTime.Parse(wallet.FechaCorte.ToString("d"));
+                    wallet.FechaDePago = DateTime.Parse(wallet.FechaDePago.ToString("dd/MM/yyyy"));
+                    wallet.FechaCorte = DateTime.Parse(wallet.FechaCorte.ToString("dd/MM/yyyy"));
                     WalletDto = wallet;
                     sen = false;
                     UserDialogs.Instance.HideLoading();

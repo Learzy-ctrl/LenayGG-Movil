@@ -9,7 +9,7 @@
              BackgroundColor="White"
              BarTextColor="black"
              BarBackgroundColor="#F0F0F0"
-             SelectedTabColor="#67AE08"
+             SelectedTabColor="#00979F"
              UnselectedTabColor="black"
              NavigationPage.HasNavigationBar="False">
 

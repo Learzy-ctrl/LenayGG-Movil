@@ -5,22 +5,23 @@
              Title="Wallets"
              BackgroundColor="White">
 
-        <Grid>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="1*"/>
-                <RowDefinition Height="7*"/>
-            </Grid.RowDefinitions>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="7*"/>
+        </Grid.RowDefinitions>
         <Frame BackgroundColor="White"
                BorderColor="White"
                Grid.Row="0">
             <Frame HorizontalOptions="Start"
                    VerticalOptions="Start"
                    CornerRadius="50"
-                   BackgroundColor="#67AE08"
-                   BorderColor="#67AE08"
+                   BackgroundColor="#1E88E5"
+                   BorderColor="Transparent"
                    Padding="10 ">
                 <Label Text="Billeteras"
-                       FontSize="Subtitle"/>
+                       FontSize="Subtitle"
+                       TextColor="White"/>
             </Frame>
         </Frame>
 
@@ -32,7 +33,7 @@
                 VerticalOptions="EndAndExpand" 
                 HorizontalOptions="EndAndExpand" 
                 Margin="25"
-                BackgroundColor="#67AE08"
+                BackgroundColor="#00979F"
                 CornerRadius="50"
                 Text="+"
                 TextColor="White"
@@ -40,15 +41,5 @@
                 Padding="20,10,20,10"
                 Command="{Binding GoToCreateWalletCommand}"/>
     </Grid>
-        
-
-
-
-
-
-
-
-
-
 
 </ContentPage>

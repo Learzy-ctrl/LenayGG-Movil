@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="LenayGG_Movil.Views.Wallet.Wallets"
+             Title="Wallets"
+             BackgroundColor="White">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="7*"/>
+        </Grid.RowDefinitions>
+        <Frame BackgroundColor="White"
+               BorderColor="White"
+               Grid.Row="0">
+            <Frame HorizontalOptions="Start"
+                   VerticalOptions="Start"
+                   CornerRadius="50"
+                   BackgroundColor="#1E88E5"
+                   BorderColor="Transparent"
+                   Padding="10 ">
+                <Label Text="Billeteras"
+                       FontSize="Subtitle"
+                       TextColor="White"/>
+            </Frame>
+        </Frame>
+
+        <ContentView x:Name="WalletOption" Content="{Binding ContentView}"
+             Grid.Row="1"/>
+
+        <Button Grid.Row="1" 
+                Grid.RowSpan="1" 
+                VerticalOptions="EndAndExpand" 
+                HorizontalOptions="EndAndExpand" 
+                Margin="25"
+                BackgroundColor="#00979F"
+                CornerRadius="50"
+                Text="+"
+                TextColor="White"
+                FontSize="Title"
+                Padding="20,10,20,10"
+                Command="{Binding GoToCreateWalletCommand}"/>
+    </Grid>
+
+</ContentPage>

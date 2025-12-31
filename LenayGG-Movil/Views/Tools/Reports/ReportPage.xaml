@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:chart="clr-namespace:Syncfusion.Maui.Charts;assembly=Syncfusion.Maui.Charts"
+             x:Class="LenayGG_Movil.Views.Tools.Reports.ReportPage"
+             xmlns:local="clr-namespace:LenayGG_Movil"
+             BackgroundColor="#F3F3F3"
+             Title="ReportPage">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0.6*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="6*"/>
+            <RowDefinition Height="4.5*"/>
+        </Grid.RowDefinitions>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="5*"/>
+                <ColumnDefinition Width="5*"/>
+            </Grid.ColumnDefinitions>
+            <Label Text="Reportes"
+                   TextColor="Black"
+                   FontAttributes="Bold"
+                   FontSize="Large"
+                   VerticalTextAlignment="Center"
+                   Margin="10,0,0,0"/>
+            <Image Grid.Column="1"
+                   Source="menus"
+                   VerticalOptions="Center"
+                   HorizontalOptions="End"
+                   WidthRequest="25"
+                   Margin="0,0,10,0"/>
+        </Grid>
+        <Grid Grid.Row="1"
+              Margin="0,20,0,0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="5*"/>
+                <ColumnDefinition Width="5*"/>
+            </Grid.ColumnDefinitions>
+
+            <StackLayout Margin="20,0,20,0" Grid.Column="0">
+                <local:PickerUnderLineColor Title="Selecciona billetera" TitleColor="Gray" ItemsSource="{Binding WalletList}" SelectedItem="{Binding Wallet}" ItemDisplayBinding="{Binding Nombre}" TextColor="Black"/>
+                <BoxView HeightRequest="2" Color="Black"/>
+            </StackLayout>
+            <StackLayout Margin="20,0,20,0" Grid.Column="1">
+                <local:PickerUnderLineColor Title="Periodo" TitleColor="Gray" ItemsSource="{Binding Opciones}" SelectedItem="{Binding OpcionSeleccionada}" TextColor="Black"/>
+                <BoxView HeightRequest="2" Color="Black"/>
+            </StackLayout>
+        </Grid>
+        <Grid Grid.Row="2">
+            <!-- El gráfico de dona -->
+            <chart:SfCircularChart>
+                <chart:DoughnutSeries ItemsSource="{Binding Gastos}"
+                      InnerRadius="0.55"	
+                      XBindingPath="Categoria"
+                      YBindingPath="TotalGasto"
+                      ShowDataLabels="True"
+                       LabelContext="Percentage"
+                       PaletteBrushes="{Binding CustomBrushes}"/>
+            </chart:SfCircularChart>
+
+            <!-- El texto centrado en el gráfico -->
+            <HorizontalStackLayout VerticalOptions="CenterAndExpand" 
+                                   HorizontalOptions="CenterAndExpand">
+                <Label Text="Gasto total: " 
+                   TextColor="Black"
+                   FontSize="16" 
+                   HorizontalTextAlignment="Center" 
+                   VerticalTextAlignment="Center"
+                   VerticalOptions="CenterAndExpand" 
+                   HorizontalOptions="CenterAndExpand"/>
+                <Label Text="{Binding Total}" 
+                   TextColor="Black"
+                   FontSize="16" 
+                   HorizontalTextAlignment="Center" 
+                   VerticalTextAlignment="Center"
+                   VerticalOptions="CenterAndExpand" 
+                   HorizontalOptions="CenterAndExpand"/>
+            </HorizontalStackLayout>
+
+        </Grid>
+        <ContentView Grid.Row="3"
+                     Content="{Binding ContentView}"/>
+    </Grid>
+</ContentPage>

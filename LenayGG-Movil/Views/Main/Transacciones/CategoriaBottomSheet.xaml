@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<the49:BottomSheet xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="LenayGG_Movil.Views.Main.Transacciones.CategoriaBottomSheet"
+             xmlns:the49="https://schemas.the49.com/dotnet/2023/maui"
+             x:Name="RootBottomSheet"
+             BackgroundColor="#49694C"
+             CornerRadius="50">
+
+    <the49:BottomSheet.Detents>
+        <the49:MediumDetent/>
+    </the49:BottomSheet.Detents>
+
+    <ScrollView>
+        <VerticalStackLayout>
+            <Grid Padding="20" BackgroundColor="#4C6B48">
+                <StackLayout>
+                    <Label Text="Selecciona categoria"
+                           HorizontalOptions="Center"
+                           VerticalOptions="Start"
+                           FontSize="Medium"
+                           TextColor="White"
+                           Margin="0,10,0,10"/>
+
+                    <CollectionView ItemsSource="{Binding Categorias}" SelectionMode="None">
+                        <CollectionView.ItemsLayout>
+                            <GridItemsLayout Orientation="Vertical" Span="3"/>
+                        </CollectionView.ItemsLayout>
+
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate>
+                                <StackLayout HorizontalOptions="Center" VerticalOptions="CenterAndExpand">
+                                    <Frame WidthRequest="60"
+                                           HeightRequest="60"
+                                           CornerRadius="30"
+                                           BackgroundColor="{Binding Color}"
+                                           HorizontalOptions="Center"
+                                           VerticalOptions="Center">
+                                        <Frame.GestureRecognizers>
+                                            <TapGestureRecognizer Command="{Binding BindingContext.SelectCategoriaCommand, Source={x:Reference RootBottomSheet}}"
+                                                                  CommandParameter="{Binding .}" />
+                                        </Frame.GestureRecognizers>
+
+                                        <Image Source="{Binding Icono}"
+                                               VerticalOptions="CenterAndExpand"
+                                               HorizontalOptions="CenterAndExpand"
+                                               HeightRequest="35"
+                                               WidthRequest="35"/>
+                                    </Frame>
+
+                                    <Label Text="{Binding Nombre}"
+                                           HorizontalOptions="Center"
+                                           TextColor="White"
+                                           FontSize="Small"/>
+                                </StackLayout>
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
+                </StackLayout>
+            </Grid>
+        </VerticalStackLayout>
+    </ScrollView>
+</the49:BottomSheet>
+

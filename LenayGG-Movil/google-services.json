@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "803040351493",
+    "project_id": "lenay-gestor-de-gastos",
+    "storage_bucket": "lenay-gestor-de-gastos.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:803040351493:android:e6760c05f65a57bba3936c",
+        "android_client_info": {
+          "package_name": "com.amazingdevelop.lenaygestordegastos"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDdVWMMtz3JH4obAnsyb2JCDf4iC5AfuGU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

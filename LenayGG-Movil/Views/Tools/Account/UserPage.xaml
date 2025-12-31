@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="LenayGG_Movil.Views.Tools.Account.UserPage"
+             BackgroundColor="#F3F3F3"
+             xmlns:local="clr-namespace:LenayGG_Movil"
+             Title="UserPage">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="3.5*"/>
+            <RowDefinition Height="8*"/>
+            <RowDefinition Height="1*"/>
+        </Grid.RowDefinitions>
+        <Frame Grid.Row="0"
+               BorderColor="Transparent"
+               BackgroundColor="#D9D9D9"
+               WidthRequest="200"
+               HeightRequest="200"
+               CornerRadius="100"
+               Padding="-2">    
+            <Image Source="{Binding PhotoUrl}"
+                   Aspect="AspectFill"/>
+            <Frame.GestureRecognizers>
+                <TapGestureRecognizer Command="{Binding SelectPhotoCommand}"/>
+            </Frame.GestureRecognizers>
+        </Frame>
+        <Image Grid.RowSpan="0"
+               Source="camera"
+               WidthRequest="45"
+               VerticalOptions="EndAndExpand"
+               Margin="100,0,0,20"/>
+        <VerticalStackLayout Grid.Row="1">
+            <Grid Padding="0,30,0,0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="10*"/>
+                </Grid.ColumnDefinitions>
+                <StackLayout Margin="50,0,30,0" Grid.Column="1">
+                    <Label Text="Nombre(s)"
+                       TextColor="Black"/>
+                    <local:BorderLessEntry Placeholder="Nombre(s)" Text="{Binding UserName}" Keyboard="Text" PlaceholderColor="Gray" TextColor="Black"/>
+                    <BoxView HeightRequest="2" Color="Black"/>
+                </StackLayout>
+            </Grid>
+
+            <Grid Padding="0,30,0,0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="10*"/>
+                </Grid.ColumnDefinitions>
+                <StackLayout Margin="50,0,30,0" Grid.Column="1">
+                    <Label Text="Apellidos"
+           TextColor="Black"/>
+                    <local:BorderLessEntry Placeholder="Apellidos" Text="{Binding UserLastName}" Keyboard="Text" PlaceholderColor="Gray" TextColor="Black"/>
+                    <BoxView HeightRequest="2" Color="Black"/>
+                </StackLayout>
+            </Grid>
+
+            <Grid Padding="0,30,0,0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="10*"/>
+                </Grid.ColumnDefinitions>
+                <StackLayout Margin="50,0,30,0" Grid.Column="1">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="5*"/>
+                            <ColumnDefinition Width="5*"/>
+                        </Grid.ColumnDefinitions>
+                        <Label Grid.Column="0"
+                               Text="Cambiar contraseña"
+                               Margin="4,10,0,10"
+                               TextColor="Gray"/>
+                        <Image Grid.Column="1"
+                               Source="refresh"
+                               WidthRequest="20"
+                               HorizontalOptions="EndAndExpand"
+                               Margin="0,0,10,0"/>
+                    </Grid>
+                    <BoxView HeightRequest="2" Color="Black"/>
+                    <StackLayout.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding GoToChangePasswordPageCommand}"/>
+                    </StackLayout.GestureRecognizers>
+                </StackLayout>
+            </Grid>
+
+            <Grid Padding="0,30,0,0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="10*"/>
+                </Grid.ColumnDefinitions>
+                <StackLayout Margin="50,0,30,0" Grid.Column="1">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="5*"/>
+                            <ColumnDefinition Width="5*"/>
+                        </Grid.ColumnDefinitions>
+                        <Label Grid.Column="0"
+                               Text="Eliminar cuenta"
+                               Margin="4,10,0,10"
+                               TextColor="#E76B6B"/>
+                        <Image Grid.Column="1"
+                               Source="delete"
+                               WidthRequest="20"
+                               HorizontalOptions="EndAndExpand"
+                               Margin="0,0,10,0"/>
+                    </Grid>
+                    <BoxView HeightRequest="2" Color="#E76B6B"/>
+                    <StackLayout.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding DeleteUserCommand}"/>
+                    </StackLayout.GestureRecognizers>
+                </StackLayout>
+            </Grid>
+
+            <Grid Padding="0,30,0,0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="10*"/>
+                </Grid.ColumnDefinitions>
+                <StackLayout Margin="50,0,30,0" Grid.Column="1">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="5*"/>
+                            <ColumnDefinition Width="5*"/>
+                        </Grid.ColumnDefinitions>
+                        <Label Grid.Column="0"
+                               Text="Cerrar sesion"
+                               Margin="4,10,0,10"
+                               TextColor="#E76B6B"/>
+                        <Image Grid.Column="1"
+                               Source="logout"
+                               WidthRequest="20"
+                               HorizontalOptions="EndAndExpand"
+                               Margin="0,0,10,0"/>
+                        
+                    </Grid>
+                    <BoxView HeightRequest="2" Color="#E76B6B"/>
+                    <StackLayout.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding LogOutCommand}"/>
+                    </StackLayout.GestureRecognizers>
+                </StackLayout>
+            </Grid>
+        </VerticalStackLayout>
+        <Button Grid.Row="2"
+                BackgroundColor="#00979F"
+                Text="Regresar"
+                TextColor="White"
+                FontAttributes="Bold"
+                CornerRadius="25"
+                WidthRequest="100"
+                Margin="0,0,10,0"
+                VerticalOptions="CenterAndExpand"
+                HorizontalOptions="EndAndExpand"
+                Command="{Binding GoBackCommand}"/>
+    </Grid>
+</ContentPage>

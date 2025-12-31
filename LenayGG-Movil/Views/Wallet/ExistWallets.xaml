@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="LenayGG_Movil.Views.Wallet.ExistWallets">
+    <RefreshView IsRefreshing="{Binding isRefreshing}"
+                 Command="{Binding RefreshPageCommand}">
+        <CollectionView ItemsSource="{Binding WalletList}"
+                        x:Name="List">
+            <CollectionView.ItemsLayout>
+                <GridItemsLayout Orientation="Vertical"
+                                 VerticalItemSpacing="15"/>
+            </CollectionView.ItemsLayout>
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Frame BackgroundColor="{Binding ColorWallet}"
+                           BorderColor="Transparent"
+                           Margin="30,0,30,0"
+                           CornerRadius="25"
+                           Grid.Row="1">
+                        <VerticalStackLayout>
+                            <Frame BackgroundColor="white"
+                                   BorderColor="White"
+                                   Margin="20,0,20,0"
+                                   Padding="5"
+                                   CornerRadius="50">
+                                <Label Text="{Binding Nombre}"
+                                       TextColor="Black"
+                                       FontSize="Title"
+                                       FontAttributes="Bold"
+                                       HorizontalTextAlignment="Center"/>
+                            </Frame>
+
+                            <Grid Padding="0,30,0,0">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="2.5*"/>
+                                    <ColumnDefinition Width="5*"/>
+                                    <ColumnDefinition Width="3*"/>
+                                </Grid.ColumnDefinitions>
+                                <Label Grid.Column="0"
+                                       Text="{Binding Label}"
+                                       HorizontalOptions="End"
+                                       VerticalOptions="End"
+                                       Padding="0,0,5,10"
+                                       TextColor="White"/>
+                                <Label Grid.Column="1"
+                                       Text="{Binding Saldo}"
+                                       FontSize="25"
+                                       FontAttributes="Bold"
+                                       TextColor="White"/>
+                                <Frame Grid.Column="2"
+                                       BackgroundColor="#f0f0f0"
+                                       BorderColor="#f0f0f0"
+                                       CornerRadius="50"
+                                       VerticalOptions="CenterAndExpand"
+                                       HorizontalOptions="CenterAndExpand">
+                                </Frame>
+                            </Grid>
+
+                            <Grid Padding="0,15,0,10" >
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="5*"/>
+                                    <ColumnDefinition Width="5*"/>
+                                </Grid.ColumnDefinitions>
+
+                                <HorizontalStackLayout Grid.Column="0">
+                                    <Label Text="Disponible:  "
+                                           FontSize="12"
+                                           IsVisible="{Binding isVisible}"
+                                           TextColor="White"/>
+                                    <Label Text="{Binding LimiteCredito}"
+                                           FontSize="12"
+                                           FontAttributes="Bold"
+                                           IsVisible="{Binding isVisible}"
+                                           TextColor="White"/>
+                                </HorizontalStackLayout>
+                                <HorizontalStackLayout Grid.Column="1"
+                                           HorizontalOptions="EndAndExpand">
+                                    <Label Text="Fecha Pago:  "
+                                           FontSize="12"
+                                           IsVisible="{Binding isVisible}"
+                                           TextColor="White"/>
+                                    <Label Text="{Binding FechaDePago}"
+                                           FontSize="12"
+                                           FontAttributes="Bold"
+                                           IsVisible="{Binding isVisible}"
+                                           TextColor="White"/>
+                                </HorizontalStackLayout>
+                            </Grid>
+                        </VerticalStackLayout>
+                        <Frame.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding Path=BindingContext.GoToDetailWalletCommand, Source={x:Reference List}}"
+                                                  CommandParameter="{Binding .}" />
+                        </Frame.GestureRecognizers>
+                    </Frame>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+    </RefreshView>
+</ContentView>

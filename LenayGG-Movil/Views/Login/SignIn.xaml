@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="LenayGG_Movil.Views.Login.SignIn"
+             NavigationPage.HasNavigationBar="False"
+             Title="SignIn"
+             BackgroundColor="#E5E5E5">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="3*" />
+            <!-- Área verde -->
+            <RowDefinition Height="2*" />
+            <!-- Area del Formulario -->
+        </Grid.RowDefinitions>
+
+        <!-- Fondo verde -->
+        <BoxView Grid.Row="0" Color="#1E88E5" HorizontalOptions="Fill" VerticalOptions="Fill" Margin="0,-50,0,0" CornerRadius="35" BackgroundColor="#E5E5E5"/>
+
+        <!-- Frame blanco -->
+        <Frame Grid.Row="0" Grid.RowSpan="2"
+           CornerRadius="30"
+           Padding="50"
+           Margin="20, -60, 20, 0"
+        BackgroundColor="White"
+        HasShadow="True"
+          HorizontalOptions="Center"
+          VerticalOptions="Center">
+
+
+            <StackLayout Spacing="20" VerticalOptions="Center">
+                <!-- Logo  -->
+                <Image Source="logotipo" HeightRequest="250" HorizontalOptions="Center" />
+
+                <!-- Correo  -->
+                <Frame CornerRadius="25" Padding="10" HasShadow="True" BackgroundColor="White">
+                    <Entry Placeholder="Correo Electrónico" TextColor="Black" Text="{Binding Email}"/>
+                </Frame>
+
+                <!-- Contraseña -->
+                
+                <Frame CornerRadius="25" Padding="10" HasShadow="True" BackgroundColor="White" Grid.Column="0">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="10*"/>
+                            <ColumnDefinition Width="2*"/>
+                        </Grid.ColumnDefinitions>
+                        <Entry Placeholder="Contraseña" IsPassword="{Binding IsPassword}" TextColor="Black" Text="{Binding Password}"/>
+                        <Image Grid.Column="1" Source="{Binding ImageIcon}" WidthRequest="25">
+                            <Image.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding ViewPasswordCommand}"/>
+                            </Image.GestureRecognizers>
+                        </Image>
+                    </Grid>
+                </Frame>
+
+                <!-- Botón de Login -->
+                <Button Text="Ingresar" TextColor="White" BackgroundColor="Black" HeightRequest="50" CornerRadius="25" Command="{Binding SignInCommand}"/>
+
+                <!-- Enlace para registrarse -->
+                <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
+                    <Label Text="¿No tienes Cuenta?" TextColor="Black" />
+                    <Label Text=" Únete" TextColor="#00979F" FontAttributes="Bold" >
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding GoToSignUpCommand}"/>
+                        </Label.GestureRecognizers>
+                    </Label>
+                </StackLayout>
+
+                <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
+                    <Label Text="¿Olvidaste tu contraseña?" TextColor="#00979F" FontAttributes="Bold" >
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding GoToResetPasswordCommand}"/>
+                        </Label.GestureRecognizers>
+                    </Label>
+                </StackLayout>
+            </StackLayout>
+        </Frame>
+    </Grid>
+</ContentPage>
+
